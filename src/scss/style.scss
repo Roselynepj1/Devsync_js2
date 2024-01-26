@@ -1,0 +1,10 @@
+@use './custom';
+
+//import material icons
+// @use '../node_modules/material-icons/css/material-icons.scss';
+
+//import the sections scss
+@use './sections/login';
+@use './sections/feed';
+@use './sections/profile';
+ 

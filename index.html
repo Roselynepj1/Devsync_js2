@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DevSync | Login</title>
+    <meta
+      name="description"
+      content="To keep connected with us please login with your personal info."
+    />
+    <link
+      rel="shortcut icon"
+      href="./src/assets/images/logo.svg"
+      type="image/svg+xml"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link href="./src/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid min-vh-100">
+      <div class="row vh-100 login">
+        <div
+          class="col-7 d-none d-lg-flex d-xl-flex justify-content-center align-items-center flex-column login-left"
+        >
+          <img
+            src="./src/assets/images/logo.svg"
+            class="app-logo"
+            alt="App logo"
+          />
+          <h2 class="text-dark">DevSync</h2>
+          <h5 class="text-secondary">Your code buddy</h5>
+        </div>
+        <form method="POST" action="profile.html"
+          class="col-12 col-sm-12 col-lg-5 login-right row flex-column justify-content-center login-form gap-2"
+          id="login-form"
+        >
+          <div class="col-12 text-center">
+            <h2>Login</h2>
+            <p>
+              To keep connected with us please login with your personal info.
+            </p>
+          </div>
+          <div class="col-12">
+            <div class="mb-3">
+              <div class="input-group shadow-sm">
+                <span class="input-group-text" id="email"
+                  ><span class="material-symbols-outlined text-secondary"
+                    >email</span
+                  ></span
+                >
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control"
+                  placeholder="Email"
+                  aria-label="Email"
+                  aria-describedby="Email"
+                />
+              </div>
+              <small class="text-danger" id="email-helper"></small>
+            </div>
+            <div class="mb-3">
+              <div class="input-group shadow-sm">
+                <span class="input-group-text" id="password"
+                  ><span class="material-symbols-outlined text-secondary"
+                    >lock</span
+                  ></span
+                >
+                <input
+                  type="password"
+                  name="password"
+                  class="form-control"
+                  placeholder="Password"
+                  aria-label="Password"
+                  aria-describedby="Password"
+                  minlength="8"
+                />
+              </div>
+              <small class="text-danger" id="password-helper"></small>
+            </div>
+            <div
+              class="col-12 d-flex justify-content-between align-items-center"
+            >
+              <a href="javascript:void(0)" class="text-decoration-none fs-6"
+                >Forgot password?</a
+              >
+              <button
+                class="d-flex gap-2 justify-content-center align-items-center btn shadow-sm"
+              >
+                <div class="spinner-border spinner-border-sm d-none" role="status" id="loader">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <span class="material-symbols-outlined text-secondary fs-6"
+                  >login</span
+                >
+                Login
+              </button>
+            </div>
+            <div class="col-12 d-flex justify-content-center gap-2">
+              <span>Don't have an account?</span>
+              <a href="./src/signup.html" class="text-decoration-none fs-6"
+                >Sign up here</a
+              >
+            </div>
+            <div
+              class="col-12 d-flex gap-3 flex-column justify-content-center align-items-center"
+            >
+              <div
+                class="d-flex justify-content-center align-items-center separator"
+              >
+                <hr />
+                <span>or</span>
+                <hr />
+              </div>
+              <button
+                class="btn d-flex align-items-center gap-2 col-10 px-4 py-2 shadow-lg social-btn"
+              >
+                <img
+                  src="./src/assets/images/facebook.svg"
+                  alt="Facebook Logo"
+                />
+                <span class="text-white fw-semibold"
+                  >Connect with your facebook account</span
+                >
+              </button>
+              <button
+                class="btn bg-white d-flex align-items-center gap-2 col-10 px-4 py-2 shadow-lg social-btn"
+              >
+                <img src="./src/assets/images/google.svg" alt="Google Logo" />
+                <span class="text-primary fw-semibold"
+                  >Connect with your google account</span
+                >
+              </button>
+              <button
+                class="btn d-flex align-items-center gap-2 col-10 px-4 py-2 shadow-lg social-btn"
+              >
+                <img src="./src/assets/images/x.svg" alt="X Logo" />
+                <span class="text-white fw-semibold"
+                  >Connect with your X account</span
+                >
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="./src/js/common.js"></script>
+    <script src="./src/js/login.js"></script>
+  </body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DevSync | Signup</title>
+    <meta
+      name="description"
+      content="Sign up now to sync with coding enthusiasts, share insights, and elevate your coding experience."
+    />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo.svg"
+      type="image/svg+xml"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link href="./css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid min-vh-100 page-content">
+      <div class="row vh-100 login">
+        <div
+          class="col-7 d-none d-lg-flex d-xl-flex justify-content-center align-items-center flex-column login-left"
+        >
+          <img
+            src="./assets/images/logo.svg"
+            class="app-logo"
+            alt="App logo"
+          />
+          <h2 class="text-dark">DevSync</h2>
+          <h5 class="text-secondary">Your code buddy</h5>
+        </div>
+        <form
+          id="signup-form"
+          class="col-12 col-sm-12 col-lg-5 login-right row flex-column justify-content-center login-form gap-2"
+        >
+          <div class="col-12 text-center">
+            <h4>Sign Up</h4>
+            <p>
+              Sign up now to sync with coding enthusiasts, share insights, and
+              elevate your coding experience.
+            </p>
+            <p class="alert alert-success d-none" id="success-msg">
+              Account created successfully
+            </p>
+          </div>
+          <div class="col-12">
+            <div class="mb-3">
+              <div class="input-group shadow-sm">
+                <span class="input-group-text" id="email"
+                  ><span class="material-symbols-outlined text-secondary"
+                    >email</span
+                  ></span
+                >
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control"
+                  placeholder="Email"
+                  aria-label="Email"
+                  aria-describedby="Email"
+                />
+              </div>
+              <small class="text-danger" id="email-helper"></small>
+            </div>
+            <div class="mb-3">
+              <div class="input-group shadow-sm">
+                <span class="input-group-text" id="password"
+                  ><span class="material-symbols-outlined text-secondary"
+                    >lock</span
+                  ></span
+                >
+                <input
+                  type="password"
+                  name="password"
+                  class="form-control"
+                  placeholder="Password"
+                  aria-label="Password"
+                  aria-describedby="Password"
+                  minlength="8"
+                />
+              </div>
+              <small class="text-danger" id="password-helper"></small>
+            </div>
+            <div class="mb-3">
+              <div class="input-group shadow-sm">
+                <span class="input-group-text" id="confirm-password"
+                  ><span class="material-symbols-outlined text-secondary">
+                    private_connectivity
+                  </span></span
+                >
+                <input
+                  type="password"
+                  name="cpassword"
+                  minlength="8"
+                  class="form-control"
+                  placeholder="Confirm password"
+                  aria-label="Confirm password"
+                  aria-describedby="Confirm password"
+                />
+              </div>
+              <small class="text-danger" id="cpassword-helper"></small>
+            </div>
+          </div>
+          <div class="col-12 d-flex justify-content-end align-items-center">
+            <button
+              class="d-flex gap-2 justify-content-center align-items-center btn shadow-sm"
+            >
+              <div
+                class="spinner-border spinner-border-sm d-none"
+                role="status"
+                id="loader"
+              >
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <span class="material-symbols-outlined text-secondary fs-6"
+                >login</span
+              >
+              Signup
+            </button>
+          </div>
+          <div class="col-12 d-flex justify-content-center gap-2">
+            <span>Already have an account?</span>
+            <a href="../index.html" class="text-decoration-none fs-6"
+              >Login instead.</a
+            >
+          </div>
+          <div
+            class="col-12 d-flex gap-3 flex-column justify-content-center align-items-center"
+          >
+            <div
+              class="d-flex justify-content-center align-items-center separator"
+            >
+              <hr />
+              <span>or</span>
+              <hr />
+            </div>
+            <button
+              class="btn d-flex align-items-center gap-2 col-10 px-4 py-2 shadow-lg social-btn"
+            >
+              <img src="./assets/images/facebook.svg" alt="Facebook Logo" />
+              <span class="text-white fw-semibold"
+                >Connect with your facebook account</span
+              >
+            </button>
+            <button
+              class="btn bg-white d-flex align-items-center gap-2 col-10 px-4 py-2 shadow-lg social-btn"
+            >
+              <img src="./assets/images/google.svg" alt="Google Logo" />
+              <span class="text-primary fw-semibold"
+                >Connect with your google account</span
+              >
+            </button>
+            <button
+              class="btn d-flex align-items-center gap-2 col-10 px-4 py-2 shadow-lg social-btn"
+            >
+              <img src="./assets/images/x.svg" alt="X Logo" />
+              <span class="text-white fw-semibold"
+                >Connect with your X account</span
+              >
+            </button>
+          </div>
+        </form>
+
+        <script src="./js/common.js"></script>
+        <script src="./js/signup.js"></script>
+      </div>
+    </div>
+  </body>
+</html>

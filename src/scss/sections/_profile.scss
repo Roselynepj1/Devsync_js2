@@ -1,0 +1,55 @@
+@use '../custom' as *;
+
+.profile-details {
+  position: relative;
+
+  .featured-image {
+    min-height: 150px;
+    background-color: $success;
+    background-image: url('../../src/assets/images/featured_image.svg');
+    background-size: cover;
+  }
+
+  .profile-image {
+    position: absolute;
+    top: 38%;
+    left: 1.45rem;
+  }
+}
+.options {
+  .option {
+    border-right: solid 1px white;
+    border-color: rgba(0, 0, 0, 0.3);
+
+    &:last-child {
+      border-left: solid 1px white;
+      border-color: rgba(0, 0, 0, 0.3);
+      border-right: none;
+    }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    flex-wrap: nowrap;
+    scroll-behavior: smooth;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: $light;
+
+    .option{
+        text-wrap: nowrap;
+        padding: 0.5rem 1.5rem !important;
+    }
+  }
+}
+
+
+.profile-feed-area {
+  // overflow-y: auto;
+  scrollbar-width: thin;
+  // height: 200dvh;
+  scrollbar-base-color: $light;
+  scroll-behavior: smooth;
+}
