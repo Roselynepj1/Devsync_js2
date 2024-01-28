@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "A starting point for the CSS Frameworks CA project",
   "scripts": {
-    "serve": "sass --watch src/scss:src/css && live-server"
+    "sass:compile": "sass src/scss:src/css",
+    "sass:watch": "sass --watch src/scss:src/css"
   },
   "repository": {
     "type": "git",

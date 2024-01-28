@@ -23,6 +23,31 @@
   }
 }
 
+.filter-btn{
+  .dropdown-toggle{
+    cursor: pointer;
+    &:after{
+      display: none;
+    }
+    &:before{
+      display: none;
+    }
+
+  }
+  .dropdown-menu{
+    --bs-dropdown-padding-y: 0rem;
+
+    .dropdown-divider{
+      margin: 0;
+    }
+    .dropdown-item{
+      &:hover{
+        @extend .active;
+      }
+    }
+  }
+}
+
 .feed-leftbar {
   gap: 1.25rem;
   top:0;
