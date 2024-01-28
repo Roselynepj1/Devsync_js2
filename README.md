@@ -4,7 +4,7 @@
 ## Overview
 
 DevSync is a collaborative platform for developers to connect, share insights, and foster innovation. Whether you're a coding enthusiast, a seasoned professional, or just starting your coding journey, DevSync is your go-to space for building, learning, and collaborating.
-![Homepage](./src/assets/screenshots/Home%20-%20Desktop.png)
+![Homepage](./src/assets/screenshots/Home.png)
 ## Features
 
 - **Connect with Developers:** Create a profile, connect with other developers, and build a network of like-minded coding enthusiasts.
