@@ -1,0 +1,123 @@
+@use '../custom' as *;
+
+// Common styles for container and row
+.container-fluid,
+.row {
+  --bs-gutter-x: 0;
+  @include media-breakpoint-down(sm) {
+  }
+}
+
+// Styles for the login section
+.login {
+  @include media-breakpoint-down(sm) {
+    margin: 0 !important;
+    min-height: 100dvh;
+    height: 100% !important;
+  }
+
+  & .login-left {
+    background-image: url('../../src/assets/images/bg.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+}
+
+// Styles for the login form
+.login-form {
+  padding: 4rem;
+
+  .input-group {
+    height: 50px;
+
+    .form-control {
+      border-left: none;
+      color: $secondary;
+      padding-left: 0;
+      &:focus {
+        border-color: transparent;
+        box-shadow: none;
+      }
+    }
+
+    .input-group-text {
+      border-right: none;
+      background-color: white;
+    }
+
+    &:focus-within {
+      border: $border-style $border-width $secondary;
+      border-radius: $border-radius;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding: 2rem 1rem;
+  }
+  @include media-breakpoint-down(lg) {
+    max-width: 768px;
+  }
+}
+
+.app-logo {
+  width: 200px;
+  height: 200px;
+}
+// Styles for social buttons
+.social-btn {
+  background-color: #0000ff;
+  width: 100%;
+  justify-content: center;
+  img {
+    width: 18px;
+    height: 18px;
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding: 0.5rem !important;
+
+    span {
+      font-size: medium;
+    }
+  }
+
+  &:first-child {
+    background-color: #0000ff;
+  }
+
+  &:last-child {
+    background-color: black;
+  }
+}
+
+// Styles for the separator
+.separator {
+  hr {
+    width: 50px;
+    margin: 0 8px;
+  }
+}
+
+//media queries for extremely large screens
+@media only screen and (min-width: 1601px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+  }
+  .page-content {
+    max-height: 1440px;
+    max-width: 1600px;
+    box-shadow: $box-shadow;
+    min-height: auto !important;
+
+    .row{
+        height: auto !important;
+    }
+
+    .login-right{
+        padding: 8rem 4rem;
+    }
+  }
+}

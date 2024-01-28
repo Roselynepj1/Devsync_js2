@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DevSync | ompose</title>
+    <meta name="description" content="Share what's new with your followers" />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo.svg"
+      type="image/svg+xml"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link href="./css/style.css" rel="stylesheet" />
+  </head>
+  <body class="vh-100">
+    <nav class="navbar fixed-top bg-body-tertiary shadow-sm">
+      <div class="container-sm container-md container-lg">
+        <div class="hstack align-items-center w-100">
+          <a
+            class="navbar-brand text-dark col-6 mx-0 hstack align-items-center"
+            href="feed.html"
+          >
+            <span class="material-symbols-outlined text-dark">close</span>
+            <span class="fs-5">Compose</span>
+          </a>
+
+          <div
+            class="col-6 d-flex justify-content-end align-items-center gap-3"
+          >
+            <a
+              href="javascript:void(0)"
+              class="d-inline d-sm-none d-md-block d-lg-none"
+              ><span class="material-symbols-outlined text-primary"
+                >send</span
+              ></a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="vstack mt-5 pt-4 px-2 gap-4">
+      <div class="hstack gap-3">
+        <img src="./assets/images/profile.svg" alt="User profile image" />
+        <button class="btn btn-sm hstack border border-dark">
+          <span class="material-symbols-outlined text-primary">add</span>
+          <span>Add a community or someone</span>
+        </button>
+      </div>
+      <!-- Tagging people -->
+      <textarea placeholder="Share what's new" id="new-post"
+                name="new-post" rows="10" class="form-control bg-light"></textarea>
+    </div>
+
+    <!-- More actions -->
+    <div class="w-100 fixed-bottom">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <div class="hstack">
+                    <span class="material-symbols-outlined text-dark">cancel</span>
+                    <!-- <span>Select a GIF</span> -->
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="hstack gap-3">
+                    <span class="material-symbols-outlined text-dark">gif_box</span>
+                    <span>Select a GIF</span>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="hstack gap-3">
+                    <span class="material-symbols-outlined text-dark">photo_camera</span>
+                    <span>Add a photo</span>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="hstack gap-3">
+                    <span class="material-symbols-outlined text-dark">videocam</span>
+                    <span>Record a video</span>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="hstack gap-3">
+                    <span class="material-symbols-outlined text-dark" style="fill: gray;">draft</span>
+                    <span>Add a file</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+  </body>
+</html>

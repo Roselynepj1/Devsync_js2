@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DevSync | Profile</title>
+    <meta
+      name="description"
+      content="To keep connected with us please login with your personal info."
+    />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo.svg"
+      type="image/svg+xml"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link href="./css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar fixed-top bg-body-tertiary shadow-sm">
+      <div class="container-sm container-md container-lg">
+        <div class="d-flex w-100">
+          <a class="navbar-brand text-dark col-3 mx-0" href="feed.html">
+            <img
+              src="./assets/images/logo.svg"
+              alt="App Logo"
+              width="30"
+              height="24"
+              class="d-inline-block align-text-top"
+            />
+            Home
+          </a>
+          <div class="col-6">
+            <div class="d-none d-sm-none d-md-none d-lg-flex">
+              <form action="" class="w-100">
+                <div class="input-group shadow-sm search-bar">
+                  <input
+                    type="search"
+                    name="search"
+                    class="form-control"
+                    placeholder="Search DevSync"
+                    aria-label="Search"
+                    aria-describedby="Search"
+                    minlength="8"
+                  />
+                  <span class="input-group-text" id="password"
+                    ><span class="material-symbols-outlined text-secondary fs-5"
+                      >search</span
+                    ></span
+                  >
+                </div>
+              </form>
+            </div>
+          </div>
+          <div
+            class="col-3 d-flex justify-content-end align-items-center gap-3"
+          >
+            <a
+              href="javascript:void(0)"
+              class="d-inline d-sm-none d-md-block d-lg-none"
+              ><span class="material-symbols-outlined text-secondary"
+                >search</span
+              ></a
+            >
+            <a href="javascript:void(0)"
+              ><span class="material-symbols-outlined text-secondary"
+                >notifications</span
+              ></a
+            >
+            <a href="javascript:void(0)"
+              ><span class="material-symbols-outlined text-secondary"
+                >chat</span
+              ></a
+            >
+            <a
+              href="profile.html"
+              class="d-none d-sm-none d-md-none d-lg-inline-flex"
+            >
+              <img
+                src="./assets/images/profile.svg"
+                width="24"
+                height="24"
+                alt="User profile image"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="container-sm container-md container-lg container-xl container-xxl feed-content-area position-static"
+    >
+      <div class="row mt-5 pt-2">
+        <div
+          class="col-3 min-vh-100 p-3 d-flex flex-column feed-leftbar d-none d-sm-none d-md-none d-lg-flex"
+        >
+          <div class="d-flex gap-3">
+            <span class="material-symbols-outlined text-dark">groups</span>
+            <span class="text-primary">Your Communities</span>
+          </div>
+          <div class="d-flex gap-3">
+            <img src="./assets/images/react.svg" alt="React JS logo" />
+            <span class="text-dark fw-semibold">Reactjs Fellows</span>
+          </div>
+          <div class="d-flex gap-3">
+            <img src="./assets/images/python.svg" alt="Python logo" />
+            <span class="text-dark fw-semibold">Pythonics</span>
+          </div>
+          <div class="d-flex gap-3">
+            <img src="./assets/images/Angular.svg" alt="Angular logo" />
+            <span class="text-dark fw-semibold">The Angulars</span>
+          </div>
+          <div class="d-flex gap-3">
+            <img src="./assets/images/vue.svg" alt="Vue logo" />
+            <span class="text-dark fw-semibold">Model Vue Controller</span>
+          </div>
+          <div class="d-flex gap-3">
+            <img src="./assets/images/vanilla-js.svg" alt="Vue logo" />
+            <span class="text-dark fw-semibold">Vanilla JS Baby</span>
+          </div>
+          <div class="d-flex gap-3">
+            <span class="material-symbols-outlined text-dark">today</span>
+            <span class="text-dark fw-semibold">Events</span>
+          </div>
+          <div class="d-flex gap-3">
+            <span class="material-symbols-outlined text-dark">trending_up</span>
+            <span class="text-dark fw-semibold">Trending</span>
+          </div>
+          <div class="d-flex gap-3">
+            <span class="material-symbols-outlined text-dark">bookmark</span>
+            <span class="text-dark fw-semibold">Bookmarks</span>
+          </div>
+          <div class="d-flex gap-3">
+            <span class="material-symbols-outlined text-dark"
+              >support_agent</span
+            >
+            <span class="text-dark fw-semibold">Help & Support</span>
+          </div>
+          <div class="d-flex gap-3">
+            <span class="material-symbols-outlined text-dark">settings</span>
+            <span class="text-dark fw-semibold">Settings & Privacy</span>
+          </div>
+
+          <a
+            href="javascript:void(0)"
+            class="btn btn-primary d-flex align-items-center justify-content-center gap-1"
+          >
+            <span class="material-symbols-outlined text-white fs-5"
+              >ink_pen</span
+            >
+            <span class="text-capitalize text-white">Create</span>
+          </a>
+        </div>
+
+        <div
+          class="col-12 col-md-12 col-lg-6 col-xl-6 bg-light pb-md-5 pb-sm-5 pb-5 pb-lg-0 vh-100 overflow-auto"
+        >
+          <div class="profile-details">
+            <div class="featured-image"></div>
+            <img
+              src="./assets/images/profile.svg"
+              width="64"
+              height="64"
+              alt="User Profile Image"
+              class="profile-image"
+            />
+            <div class="profile-description bg-dark vstack">
+              <div class="hstack p-4">
+                <div class="vstack">
+                  <span class="text-white">Roselyne P Johansen</span>
+                  <span class="text-white">@roselyne</span>
+                </div>
+                <div class="hstack ms-auto gap-3">
+                  <span
+                    class="material-symbols-outlined text-white border rounded p-1"
+                    >edit</span
+                  >
+                  <span
+                    class="material-symbols-outlined text-white border rounded p-1"
+                    >share</span
+                  >
+                </div>
+              </div>
+              <div class="options hstack">
+                <div
+                  class="hstack p-2 gap-2 text-white option flex-fill justify-content-center"
+                >
+                  <span class="text-white">My Feed</span>
+                </div>
+                <div
+                  class="hstack p-2 gap-2 text-white option flex-fill justify-content-center"
+                >
+                  <span>Communities</span>
+                  <span>120</span>
+                </div>
+                <div
+                  class="hstack p-2 gap-2 text-white option flex-fill justify-content-center"
+                >
+                  <span>Followers</span>
+                  <span>5.8k</span>
+                </div>
+                <div
+                  class="hstack p-2 gap-2 text-white option flex-fill justify-content-center"
+                >
+                  <span>Following</span>
+                  <span>200</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-2 bg-light shadow-sm profile-feed-area">
+            <div
+              class="create-post card p-3 mb-3 d-none d-sm-none d-md-none d-lg-block"
+            >
+              <div class="create-post-head">
+                <div class="hstack gap-3">
+                  <img
+                    src="./assets/images/profile.svg"
+                    width="30"
+                    height="30"
+                    alt="User Profile Image"
+                  />
+                  <div class="vstack ms-2 justify-content-center">
+                  <small class="fw-normal">Roselyn P Johansen</small>
+                  <small class="fw-bold">@roselyne <span>• 1h</span></small>
+                </div>
+                </div>
+              </div>
+              <div class="card-body p-0 my-3">
+                <textarea
+                  class="form-control bg-light"
+                  placeholder="Share what's new ..."
+                ></textarea>
+              </div>
+              <div class="hstack">
+                <div class="hstack gap-2">
+                  <span class="material-symbols-outlined">photo_camera</span>
+                  <span class="material-symbols-outlined">videocam</span>
+                  <span class="material-symbols-outlined">gif_box</span>
+                  <span class="material-symbols-outlined">draft</span>
+                </div>
+                <div class="hstack ms-auto">
+                  <span class="material-symbols-outlined text-primary"
+                    >send</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Create a post end -->
+            <div class="card post mb-3 p-3">
+              <div class="create-post-head">
+                <div class="hstack">
+                  <img
+                    src="./assets/images/profile.svg"
+                    width="30"
+                    height="30"
+                    alt="User Profile Image"
+                  />
+                  <div class="vstack ms-2 justify-content-center">
+                    <small class="fw-normal">Roselyn P Johansen</small>
+                    <small class="fw-bold">@roselyne <span>• 1h</span></small>
+                  </div>
+                  <!-- More Post Actions -->
+                  <div class="ms-auto">
+                    <div class="dropdown">
+                      <span
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        class="material-symbols-outlined text-dark ms-auto dropdown-toggle post-dropdown"
+                        >more_vert</span
+                      >
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a
+                            class="dropdown-item hstack align-items-center gap-3"
+                            href="javascript:void(0)"
+                            ><span class="material-symbols-outlined fs-5"
+                              >bookmark</span
+                            ><span>Bookmark</span></a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- More post actions -->
+                </div>
+              </div>
+              <div class="post-body my-2">
+                <span>
+                  Due to my elite programming skills, I figured out how to shave
+                  off thirty seconds from my app's start up time. Here is some
+                  optimization tips:
+                </span>
+                <ol>
+                  <li>
+                    Remove the sleep(30) call you added a month ago and forgot
+                    about.......
+                  </li>
+                </ol>
+                <span class="text-primary">See more</span>
+              </div>
+              <div
+                class="post-actions hstack justify-content-between align-items-center"
+              >
+                <div class="hstack gap-2">
+                  <div class="hstack align-items-center gap-1">
+                    <span
+                      class="material-symbols-outlined text-dark ms-auto fs-5"
+                      >thumb_up</span
+                    >
+                    <span class="fw-medium">2.8k</span>
+                  </div>
+                  <div class="hstack align-items-center gap-1">
+                    <span
+                      class="material-symbols-outlined text-dark ms-auto fs-5"
+                      >comment</span
+                    >
+                    <span class="fw-medium">1k</span>
+                  </div>
+                </div>
+                <div class="hstack gap-2">
+                  <span>share</span>
+                  <img src="./assets/images/share.svg" alt="Share Icon" />
+                </div>
+              </div>
+            </div>
+            <!-- Sample post end -->
+            <div class="card post mb-3 p-3">
+              <div class="create-post-head">
+                <div class="hstack">
+                  <img
+                    src="./assets/images/profile.svg"
+                    width="30"
+                    height="30"
+                    alt="User Profile Image"
+                  />
+                  <div class="vstack ms-2 justify-content-center">
+                    <small class="fw-normal">Roselyn P Johansen</small>
+                    <small class="fw-bold"
+                      >@roselyne <span>• 2 days ago</span></small
+                    >
+                  </div>
+                  <!-- More Post Actions -->
+                  <div class="ms-auto">
+                    <div class="dropdown">
+                      <span
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        class="material-symbols-outlined text-dark ms-auto dropdown-toggle post-dropdown"
+                        >more_vert</span
+                      >
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a
+                            class="dropdown-item hstack align-items-center gap-3"
+                            href="javascript:void(0)"
+                            ><span class="material-symbols-outlined fs-5"
+                              >bookmark</span
+                            ><span>Bookmark</span></a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- More post actions -->
+                </div>
+              </div>
+              <div class="post-body my-2">
+                <p>
+                  🤖 Dive into the future of tech with DevSync! 🚀✨ Explore the
+                  wonders of Artificial Intelligence, share your insights, and
+                  collaborate with like-minded AI enthusiasts. From machine
+                  learning to neural networks, let's unravel the endless
+                  possibilities together. Join the AI conversation at
+                  DevSync!.......
+                </p>
+                <span class="text-primary">See more</span>
+              </div>
+              <div
+                class="post-actions hstack justify-content-between align-items-center"
+              >
+                <div class="hstack gap-2">
+                  <div class="hstack align-items-center gap-1">
+                    <span
+                      class="material-symbols-outlined text-dark ms-auto fs-5"
+                      >thumb_up</span
+                    >
+                    <span class="fw-medium">1.8k</span>
+                  </div>
+                  <div class="hstack align-items-center gap-1">
+                    <span
+                      class="material-symbols-outlined text-dark ms-auto fs-5"
+                      >comment</span
+                    >
+                    <span class="fw-medium">69</span>
+                  </div>
+                </div>
+                <div class="hstack gap-2">
+                  <span>share</span>
+                  <img src="./assets/images/share.svg" alt="Share Icon" />
+                </div>
+              </div>
+            </div>
+            <!-- Sample post end -->
+            <!-- Create a post end -->
+            <div class="card post mb-3 p-3">
+              <div class="create-post-head">
+                <div class="hstack">
+                  <img
+                    src="./assets/images/profile.svg"
+                    width="30"
+                    height="30"
+                    alt="User Profile Image"
+                  />
+                  <div class="vstack ms-2 justify-content-center">
+                    <small class="fw-normal">Roselyn P Johansen</small>
+                    <small class="fw-bold"
+                      >@roselyne <span>• 5 days ago</span></small
+                    >
+                  </div>
+                  <!-- More Post Actions -->
+                  <div class="ms-auto">
+                    <div class="dropdown">
+                      <span
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        class="material-symbols-outlined text-dark ms-auto dropdown-toggle post-dropdown"
+                        >more_vert</span
+                      >
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a
+                            class="dropdown-item hstack align-items-center gap-3"
+                            href="javascript:void(0)"
+                            ><span class="material-symbols-outlined fs-5"
+                              >bookmark</span
+                            ><span>Bookmark</span></a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- More post actions -->
+                </div>
+              </div>
+              <div class="post-body my-2">
+                <p>
+                  REST API cheat sheet. The method to download high-resolution
+                  PDF is available at the end. This guide is designed to help
+                  you understand the world of RESTful APIs in a clear and
+                  engaging way. What's inside:- An exploration of the six
+                  fundamental principles of REST API design....
+                </p>
+
+                <span class="text-primary">See more</span>
+                <img
+                  src="./assets/images/rest_api.svg"
+                  alt="Rest API architecture"
+                  class="img-fluid"
+                />
+              </div>
+              <div
+                class="post-actions hstack justify-content-between align-items-center"
+              >
+                <div class="hstack gap-2">
+                  <div class="hstack align-items-center gap-1">
+                    <span
+                      class="material-symbols-outlined text-dark ms-auto fs-5"
+                      >thumb_up</span
+                    >
+                    <span class="fw-medium">18.8k</span>
+                  </div>
+                  <div class="hstack align-items-center gap-1">
+                    <span
+                      class="material-symbols-outlined text-dark ms-auto fs-5"
+                      >comment</span
+                    >
+                    <span class="fw-medium">5.9k</span>
+                  </div>
+                </div>
+                <div class="hstack gap-2">
+                  <span>share</span>
+                  <img src="./assets/images/share.svg" alt="Share Icon" />
+                </div>
+              </div>
+            </div>
+            <!-- Sample post end -->
+          </div>
+        </div>
+        <!-- Posts end -->
+        <div
+          class="col-3 py-2 px-3 pe-0 position-sticky d-flex flex-column feed-rightbar d-none d-sm-none d-md-none d-lg-flex"
+        >
+          <h6>Suggested</h6>
+          <div class="card p-3 community-card shadow-sm text-white rounded-3">
+            <div class="d-flex gap-2 mb-3">
+              <span class="material-symbols-outlined"
+                >supervised_user_circle</span
+              >
+              <span>Communities</span>
+            </div>
+            <p>New ways to find and join communities</p>
+            <button class="btn btn-light">Find your communities</button>
+          </div>
+          <h6 class="mt-4">You might like</h6>
+
+          <div class="card shadow-sm">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex follow-card align-items-center">
+                <img src="./assets/images/user_10.svg" alt="User 1" />
+                <div class="d-flex flex-column ms-3">
+                  <span class="mb-0 username">Ethan Walker</span>
+                  <span class="user-handle">@walker</span>
+                </div>
+                <button class="follow-btn btn btn-sm border-primary ms-auto">
+                  Follow
+                </button>
+              </li>
+              <li class="list-group-item d-flex follow-card align-items-center">
+                <img src="./assets/images/user_11.svg" alt="User 1" />
+                <div class="d-flex flex-column ms-3">
+                  <span class="mb-0 username">Lowbudget Zuck</span>
+                  <span class="user-handle">@lowbugetzuck</span>
+                </div>
+                <button class="follow-btn btn btn-sm border-primary ms-auto">
+                  Follow
+                </button>
+              </li>
+              <li class="list-group-item d-flex follow-card align-items-center">
+                <img src="./assets/images/user_12.svg" alt="User 1" />
+                <div class="d-flex flex-column ms-3">
+                  <span class="mb-0 username">Mia Sanchez</span>
+                  <span class="user-handle">@miasanchez</span>
+                </div>
+                <button class="follow-btn btn btn-sm border-primary ms-auto">
+                  Follow
+                </button>
+              </li>
+              <li class="list-group-item d-flex follow-card align-items-center">
+                <img src="./assets/images/user_13.svg" alt="User 1" />
+                <div class="d-flex flex-column ms-3">
+                  <span class="mb-0 username">Olivia Hartman</span>
+                  <span class="user-handle">@hartman</span>
+                </div>
+                <button class="follow-btn btn btn-sm border-primary ms-auto">
+                  Follow
+                </button>
+              </li>
+              <li class="list-group-item d-flex follow-card align-items-center">
+                <img src="./assets/images/user_14.svg" alt="User 1" />
+                <div class="d-flex flex-column ms-3">
+                  <span class="mb-0 username">Maya Patel</span>
+                  <span class="user-handle">@mayapatel</span>
+                </div>
+                <button class="follow-btn btn btn-sm border-primary ms-auto">
+                  Follow
+                </button>
+              </li>
+              <li class="list-group-item">
+                <a
+                  href="javascript:void(0)"
+                  class="fw-medium fs-6 text-decoration-none"
+                  >Show more</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botoom navigation -->
+    <nav class="navbar fixed-bottom bg-body-tertiary shadow-sm d-lg-none">
+      <div class="container-sm container-md container-lg">
+        <div class="hstack justify-content-evenly w-100 mobile-icons">
+          <a
+            href="feed.html"
+            class="vstack text-decoration-none align-items-center text-dark"
+          >
+            <span class="material-symbols-outlined">home</span>
+            <small>Home</small>
+          </a>
+          <a
+            href="feed.html"
+            class="vstack text-decoration-none align-items-center text-dark"
+          >
+            <span class="material-symbols-outlined">groups</span>
+            <small>Communities</small>
+          </a>
+          <a
+            href="profile.html"
+            class="vstack text-decoration-none align-items-center text-dark"
+          >
+            <span class="material-symbols-outlined">account_circle</span>
+            <small>Profile</small>
+          </a>
+          <a
+            href="feed.html"
+            class="vstack text-decoration-none align-items-center text-dark"
+          >
+            <span class="material-symbols-outlined">bookmark</span>
+            <small>Bookmarks</small>
+          </a>
+          <a
+            href="feed.html"
+            class="vstack text-decoration-none align-items-center text-dark"
+          >
+            <span class="material-symbols-outlined">settings</span>
+            <small>Settings</small>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- Bottom Create post icon for mobile only -->
+
+    <a
+      href="post.html"
+      class="position-fixed floating-icon d-lg-none d-xl-none d-xxl-none"
+      ><span class="material-symbols-outlined text-white">edit</span></a
+    >
+  </body>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
+      const dropdownList = [...dropdownElementList].map(
+        (dropdownToggleEl) => new bootstrap.Dropdown(dropdownToggleEl)
+      )
+    })
+  </script>
+</html>
