@@ -47,6 +47,8 @@ function loginValidation() {
 function signupValidation() {
   const signupForm = document.getElementById('signup-form')
   const successMsg = document.getElementById('success-msg')
+  const errorMsg = document.getElementById('error-msg')
+  const error = document.getElementById('error')
   //get the helpers
   const emailHelper = document.getElementById('email-helper')
   const passwordHelper = document.getElementById('password-helper')
@@ -62,6 +64,28 @@ function signupValidation() {
     password: false,
     cpassword: false,
   }
+const showErrorMsg = (message) => {
+    hideSuccessMsg()
+    errorMsg.innerHTML = message
+    error.classList.remove('d-none')
+  }
+
+  const hideErrorMsg = () => {
+    error.classList.add('d-none')
+  }
+  //Success form submission
+  const success = () => {
+    hideErrorMsg()
+    loader.classList.add('d-none')
+    signupForm.reset()
+    successMsg.classList.remove('d-none')
+    
+  }
+  const hideSuccessMsg = ()=>{
+    successMsg.classList.add('d-none')
+  }
+
+  
 
   if (!validateLength(email)) {
     emailHelper.textContent = 'Email is required'
@@ -92,14 +116,17 @@ function signupValidation() {
 
   //check if no errors have been raised
   if (!errors['email'] && !errors['password'] && !errors['cpassword']) {
-    //create a fake login action to happen after 3 seconds
-    loader.classList.remove('d-none')
-    const timeout = setTimeout(() => {
-      loader.classList.add('d-none')
-      signupForm.reset()
-      successMsg.classList.remove('d-none') 
-      clearTimeout(timeout)
-    }, 3000)
+    //return the data from the form
+    //return a function to clear the form when submission is done
+    return {
+      loader,
+      success,
+      user: { email, password },
+      showErrorMsg,
+      hideErrorMsg,
+    }
+  } else {
+    return false
   }
 }
 
@@ -115,6 +142,6 @@ function validateLength(value, length = 3) {
   return value != '' && value.length >= length
 }
 
-function equal(value1,value2){
-    return value1 === value2
+function equal(value1, value2) {
+  return value1 === value2
 }
