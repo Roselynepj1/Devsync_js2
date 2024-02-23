@@ -33,7 +33,7 @@
           <h2 class="text-dark">DevSync</h2>
           <h5 class="text-secondary">Your code buddy</h5>
         </div>
-        <form method="POST" action="profile.html"
+        <form method="POST"
           class="col-12 col-sm-12 col-lg-5 login-right row flex-column justify-content-center login-form gap-2"
           id="login-form"
         >
@@ -41,6 +41,13 @@
             <h2>Login</h2>
             <p>
               To keep connected with us please login with your personal info.
+            </p>
+            <p class="alert alert-success d-none" id="success-msg">
+              Account created successfully
+            </p>
+            <p class="alert alert-danger d-none alert-dismissible fade show" role="alert" id="error">
+              <span id="error-msg"></span>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </p>
           </div>
           <div class="col-12">
@@ -148,7 +155,7 @@
       </div>
     </div>
 
-    <script src="./src/js/common.js"></script>
-    <script src="./src/js/login.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script> 
+    <script type="module" src="./src/js/login.mjs"></script>
   </body>
 </html>

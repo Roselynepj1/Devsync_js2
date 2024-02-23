@@ -163,7 +163,7 @@
           </div>
 
           <a
-            href="javascript:void(0)"
+            href="feed.html#createPost"
             class="btn btn-primary d-flex align-items-center justify-content-center gap-1"
           >
             <span class="material-symbols-outlined text-white fs-5"
@@ -176,402 +176,56 @@
         <div
           class="col-12 col-md-12 col-lg-6 col-xl-6 bg-light feed-area p-2 pb-5"
         >
-          <div
+          <form id="createPost"
             class="create-post card p-3 mb-3 d-none d-sm-none d-md-none d-lg-block"
           >
             <div class="create-post-head">
-              <div class="hstack">
+              <div class="hstack current-user">
                 <img
-                  src="./assets/images/profile.svg"
+                  src="./assets/images/avatar.svg"
+                  class="bg-light rounded-circle"
                   width="30"
                   height="30"
                   alt="User Profile Image"
                 />
                 <div class="vstack ms-3 justify-content-center">
-                  <small class="fw-normal">Roselyn P Johansen</small>
-                  <small class="fw-bold">@roselyne</small>
+                  <small class="fw-normal current-username">Roselyn P Johansen</small>
+                  <small class="fw-bold current-username-handle">@roselyne</small>
                 </div>
               </div>
             </div>
             <div class="card-body p-0 my-3">
-              <textarea
-                id="new-post"
-                name="new-post"
-                class="form-control bg-light"
-                placeholder="Share what's new ..."
+              <small class="text-success d-none success-helper"></small>
+              <input type="text" required placeholder="Post title" name="title" class="form-control mb-2 bg-light" maxlength="255">
+              <small class="text-danger d-none title-helper"></small>
+              <textarea required
+              id="post-body"
+              name="body"
+              maxlength="280"
+              class="form-control bg-light"
+              placeholder="Share what's new ..."
               ></textarea>
+              <small class="text-danger d-none body-helper"></small>
             </div>
             <div class="hstack">
               <div class="hstack gap-2">
-                <span class="material-symbols-outlined">photo_camera</span>
-                <span class="material-symbols-outlined">videocam</span>
-                <span class="material-symbols-outlined">gif_box</span>
-                <span class="material-symbols-outlined">draft</span>
+                <span class="material-symbols-outlined pointer  show-media-url-input">photo_camera</span>
+                <span class="material-symbols-outlined pointer  show-media-url-input">videocam</span>
+                <span class="material-symbols-outlined pointer  show-media-url-input">gif_box</span>
+                <span class="material-symbols-outlined disabled">draft</span>
+                <span class="material-symbols-outlined pointer show-tags-input">sell</span>
+                <input type="url" name="media" class="form-control d-none" id="medialUrl" placeholder="Enter media url">
+                <input type="text" name="tags" maxlength="24" class="form-control d-none" id="tags" placeholder="Tags: i.e trend, fun, code is fun">
               </div>
               <div class="hstack ms-auto">
-                <span class="material-symbols-outlined text-primary">send</span>
+                <button type="submit" disabled id="submitBtn" class="border-0 btn"><span class="material-symbols-outlined text-primary">send</span></button>
               </div>
             </div>
-          </div>
+          </form>
 
           <!-- Create a post end -->
-          <div class="card post mb-3 p-3">
-            <div class="create-post-head">
-              <div class="hstack">
-                <img
-                  src="./assets/images/profile.svg"
-                  width="30"
-                  height="30"
-                  alt="User Profile Image"
-                />
-                <div class="vstack ms-2 justify-content-center">
-                  <small class="fw-normal">Roselyn P Johansen</small>
-                  <small class="fw-bold">@roselyne <span>• 1h</span></small>
-                </div>
-                <!-- More Post Actions -->
-                <div class="ms-auto">
-                  <div class="dropdown">
-                    <span
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      class="material-symbols-outlined text-dark ms-auto dropdown-toggle post-dropdown"
-                      >more_vert</span
-                    >
-                    <ul class="dropdown-menu">
-                      <li>
-                        <a
-                          class="dropdown-item hstack align-items-center gap-3"
-                          href="javascript:void(0)"
-                          ><span class="material-symbols-outlined fs-5"
-                            >bookmark</span
-                          ><span>Bookmark</span></a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <!-- More post actions -->
-              </div>
-            </div>
-            <div class="post-body my-2">
-              <span>
-                Due to my elite programming skills, I figured out how to shave
-                off thirty seconds from my app's start up time. Here is some
-                optimization tips:
-              </span>
-              <ol>
-                <li>
-                  Remove the sleep(30) call you added a month ago and forgot
-                  about.......
-                </li>
-              </ol>
-              <span class="text-primary">See more</span>
-            </div>
-            <div
-              class="post-actions hstack justify-content-between align-items-center"
-            >
-              <div class="hstack gap-2">
-                <div class="hstack align-items-center gap-1">
-                  <span class="material-symbols-outlined text-dark ms-auto fs-5"
-                    >thumb_up</span
-                  >
-                  <span class="fw-medium">2.8k</span>
-                </div>
-                <div class="hstack align-items-center gap-1">
-                  <span class="material-symbols-outlined text-dark ms-auto fs-5"
-                    >comment</span
-                  >
-                  <span class="fw-medium">1k</span>
-                </div>
-              </div>
-              <div class="hstack gap-2">
-                <span>share</span>
-                <img src="./assets/images/share.svg" alt="Share Icon" />
-              </div>
-            </div>
-          </div>
-          <!-- Sample post end -->
-
-          <div class="card post mb-3 p-3">
-            <div class="create-post-head">
-              <div class="hstack">
-                <img
-                  src="./assets/images/user_2.svg"
-                  width="30"
-                  height="30"
-                  alt="User Profile Image"
-                />
-                <div class="vstack ms-2 justify-content-center">
-                  <small class="fw-normal">Aisha Thompson</small>
-                  <small class="fw-bold">@aisha <span>• 3h</span></small>
-                </div>
-                <!-- More Post Actions -->
-                <div class="ms-auto">
-                  <div class="dropdown">
-                    <span
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      class="material-symbols-outlined text-dark ms-auto dropdown-toggle post-dropdown"
-                      >more_vert</span
-                    >
-                    <ul class="dropdown-menu">
-                      <li>
-                        <a
-                          class="dropdown-item hstack align-items-center gap-3"
-                          href="javascript:void(0)"
-                          ><span class="material-symbols-outlined fs-5"
-                            >bookmark</span
-                          ><span>Bookmark</span></a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          class="dropdown-item hstack align-items-center gap-3"
-                          href="javascript:void(0)"
-                          ><span class="material-symbols-outlined fs-5"
-                            >person_add</span
-                          ><span>Follow User</span></a
-                        >
-                      </li>
-                      <li><hr class="dropdown-divider" /></li>
-                      <li>
-                        <a
-                          class="dropdown-item hstack align-items-center gap-3"
-                          href="javascript:void(0)"
-                          ><span class="material-symbols-outlined fs-5"
-                            >block</span
-                          ><span>Block User</span></a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <!-- More post actions -->
-              </div>
-            </div>
-            <div class="post-body my-2">
-              <p>
-                🚀 Elevate your PHP game with clean coding principles! 💡
-                Embrace readability, maintainability, and efficiency in your
-                projects. Let's write code that not only works but shines!
-              </p>
-              <p class="text-primary">See more</p>
-              <img
-                src="./assets/images/clean_coding.svg"
-                class="img-fluid"
-                height="300"
-                alt="Clean coding practices"
-              />
-            </div>
-            <div
-              class="post-actions hstack justify-content-between align-items-center"
-            >
-              <div class="hstack gap-2">
-                <div class="hstack align-items-center gap-1">
-                  <span class="material-symbols-outlined text-dark ms-auto fs-5"
-                    >thumb_up</span
-                  >
-                  <span class="fw-medium">8k</span>
-                </div>
-                <div class="hstack align-items-center gap-1">
-                  <span class="material-symbols-outlined text-dark ms-auto fs-5"
-                    >comment</span
-                  >
-                  <span class="fw-medium">2.2k</span>
-                </div>
-              </div>
-              <div class="hstack gap-2">
-                <span>share</span>
-                <img src="./assets/images/share.svg" alt="Share Icon" />
-              </div>
-            </div>
-          </div>
-          <!-- Sample post end -->
-          <div class="card post mb-3 p-3">
-            <div class="create-post-head">
-              <div class="hstack">
-                <img
-                  src="./assets/images/user_3.svg"
-                  width="30"
-                  height="30"
-                  alt="User Profile Image"
-                />
-                <div class="vstack ms-2 justify-content-center">
-                  <small class="fw-normal">Malik Johnson</small>
-                  <small class="fw-bold">@malikjohnson <span>• 4h</span></small>
-                </div>
-                <!-- More Post Actions -->
-                <div class="ms-auto">
-                  <div class="dropdown">
-                    <span
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      class="material-symbols-outlined text-dark ms-auto dropdown-toggle post-dropdown"
-                      >more_vert</span
-                    >
-                    <ul class="dropdown-menu">
-                      <li>
-                        <a
-                          class="dropdown-item hstack align-items-center gap-3"
-                          href="javascript:void(0)"
-                          ><span class="material-symbols-outlined fs-5"
-                            >bookmark</span
-                          ><span>Bookmark</span></a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          class="dropdown-item hstack align-items-center gap-3"
-                          href="javascript:void(0)"
-                          ><span class="material-symbols-outlined fs-5"
-                            >person_add</span
-                          ><span>Follow User</span></a
-                        >
-                      </li>
-                      <li><hr class="dropdown-divider" /></li>
-                      <li>
-                        <a
-                          class="dropdown-item hstack align-items-center gap-3"
-                          href="javascript:void(0)"
-                          ><span class="material-symbols-outlined fs-5"
-                            >block</span
-                          ><span>Block User</span></a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <!-- More post actions -->
-              </div>
-            </div>
-            <div class="post-body my-2">
-              <p>
-                🚀 Welcome to DevSync, where coding meets connection! 🤝✨ Join
-                our thriving community of developers passionate about innovation
-                and collaboration. Whether you're a seasoned pro or just
-                starting your coding journey, DevSync is your go-to space for
-                sharing insights, learning, and .......
-              </p>
-
-              <p class="text-primary">See more</p>
-            </div>
-            <div
-              class="post-actions hstack justify-content-between align-items-center"
-            >
-              <div class="hstack gap-2">
-                <div class="hstack align-items-center gap-1">
-                  <span class="material-symbols-outlined text-dark ms-auto fs-5"
-                    >thumb_up</span
-                  >
-                  <span class="fw-medium">10k</span>
-                </div>
-                <div class="hstack align-items-center gap-1">
-                  <span class="material-symbols-outlined text-dark ms-auto fs-5"
-                    >comment</span
-                  >
-                  <span class="fw-medium">4.5k</span>
-                </div>
-              </div>
-              <div class="hstack gap-2">
-                <span>share</span>
-                <img src="./assets/images/share.svg" alt="Share Icon" />
-              </div>
-            </div>
-          </div>
-          <!-- Sample post end -->
-          <div class="card post mb-3 p-3">
-            <div class="create-post-head">
-              <div class="hstack">
-                <img
-                  src="./assets/images/user_3.svg"
-                  width="30"
-                  height="30"
-                  alt="User Profile Image"
-                />
-                <div class="vstack ms-2 justify-content-center">
-                  <small class="fw-normal">Malik Johnson</small>
-                  <small class="fw-bold">@malikjohnson <span>• 8h</span></small>
-                </div>
-                <!-- More Post Actions -->
-                <div class="ms-auto">
-                  <div class="dropdown">
-                    <span
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      class="material-symbols-outlined text-dark ms-auto dropdown-toggle post-dropdown"
-                      >more_vert</span
-                    >
-                    <ul class="dropdown-menu">
-                      <li>
-                        <a
-                          class="dropdown-item hstack align-items-center gap-3"
-                          href="javascript:void(0)"
-                          ><span class="material-symbols-outlined fs-5"
-                            >bookmark</span
-                          ><span>Bookmark</span></a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          class="dropdown-item hstack align-items-center gap-3"
-                          href="javascript:void(0)"
-                          ><span class="material-symbols-outlined fs-5"
-                            >person_add</span
-                          ><span>Follow User</span></a
-                        >
-                      </li>
-                      <li><hr class="dropdown-divider" /></li>
-                      <li>
-                        <a
-                          class="dropdown-item hstack align-items-center gap-3"
-                          href="javascript:void(0)"
-                          ><span class="material-symbols-outlined fs-5"
-                            >block</span
-                          ><span>Block User</span></a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <!-- More post actions -->
-              </div>
-            </div>
-            <div class="post-body my-2">
-              <p>
-                Hello everyone, I am currently in my first year of studying for
-                a Bachelor's degree in Business Computer Science. I am
-                interested in creating a study group where we can read together
-                and summarize what we have read at the end of the given time
-                frame. I am also looking for study partners who can help me to
-                do well. If you are interested, please let me know. .......
-              </p>
-
-              <p class="text-primary">See more</p>
-            </div>
-            <div
-              class="post-actions hstack justify-content-between align-items-center"
-            >
-              <div class="hstack gap-2">
-                <div class="hstack align-items-center gap-1">
-                  <span class="material-symbols-outlined text-dark ms-auto fs-5"
-                    >thumb_up</span
-                  >
-                  <span class="fw-medium">10k</span>
-                </div>
-                <div class="hstack align-items-center gap-1">
-                  <span class="material-symbols-outlined text-dark ms-auto fs-5"
-                    >comment</span
-                  >
-                  <span class="fw-medium">4.5k</span>
-                </div>
-              </div>
-              <div class="hstack gap-2">
-                <span>share</span>
-                <img src="./assets/images/share.svg" alt="Share Icon" />
-              </div>
-            </div>
-          </div>
-          <!-- Sample post end -->
+          <div class="posts-placeholders"></div>
+          <div class="posts-area"></div>
         </div>
         <!-- Posts end -->
         <div
@@ -706,12 +360,5 @@
     >
   </body>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
-      const dropdownList = [...dropdownElementList].map(
-        (dropdownToggleEl) => new bootstrap.Dropdown(dropdownToggleEl)
-      )
-    })
-  </script>
+  <script src="./js/feed.js" type="module"></script>
 </html>
