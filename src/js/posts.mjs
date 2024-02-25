@@ -3,7 +3,7 @@ import { POSTS_URL } from './contants.mjs'
 
 export const getPosts = async ({
   sortOrder = 'desc',
-  limit = 20,
+  limit = 50,
   author = true,
   reactions = true,
 } = {}) => {
@@ -35,5 +35,30 @@ export const createPost = async (post) => {
     method: 'POST',
     body: JSON.stringify(post),
   })
+  return await response.json()
+}
+
+export const updatePost = async (postId, post) => {
+  const response = await auth.authFetch(`${POSTS_URL}/${postId}`, {
+    method: 'PUT',
+    body: JSON.stringify(post),
+  })
+  return await response.json()
+}
+
+export const deletePost = async (postId) => {
+  const response = await auth.authFetch(`${POSTS_URL}/${postId}`, {
+    method: 'DELETE',
+  })
+  return await response.json()
+}
+
+export const getPost = async (postId) => {
+  const response = await auth.authFetch(
+    `${POSTS_URL}/${postId}?_author=true&_reactions=true&_comments=true`,
+    {
+      method: 'GET',
+    }
+  )
   return await response.json()
 }

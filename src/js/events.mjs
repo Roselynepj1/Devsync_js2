@@ -1,6 +1,6 @@
-import { createPost, likePost } from './posts.mjs'
+import {  deletePost } from './posts.mjs'
 
-export const createPostEventListener = (form, callback) => {
+export const postFormEventListener = (form, callback) => {
   //check if the title is provided
   const postTitle = form.querySelector("input[name='title']")
   const postBody = form.querySelector("textarea[name='body']")
@@ -10,11 +10,11 @@ export const createPostEventListener = (form, callback) => {
   //This forms should have a submit button
   const submitBtn = form.querySelector("button[type='submit']")
 
-  const clear = () => {
+  const clear = (successMsg) => {
     form.reset()
     postTitle.classList.remove('is-valid')
     postBody.classList.remove('is-valid')
-    successHelper.innerHTML = 'Post created successfully'
+    successHelper.innerHTML = successMsg
     successHelper.classList.remove('d-none')
     setTimeout(() => {
       successHelper.classList.add('d-none')
@@ -62,11 +62,23 @@ export const createPostEventListener = (form, callback) => {
     let post = Object.fromEntries(formData.entries())
     post = { ...post, tags: formData.get('tags').split(',') }
 
-    createPost(post)
-      .then((post) => {
-        clear()
-        callback(post)
-      })
-      .catch((error) => console.log(error))
+    //callback
+    callback(post, { clearForm: clear })
+  })
+}
+
+export const deletePostEventListener = (element, postId) => {
+  element.addEventListener('click', (event) => {
+    //The post card element is logicalled created as follows
+    const postCard = document.getElementById(`post_${postId}`)
+    //Prompt the user to delete the post
+    const result = confirm('Are you sure you want to delete this post?')
+
+    if (!result) return
+
+    //Delete the post
+    deletePost(postId).then((res) => {
+      postCard.classList.add('d-none')
+    })
   })
 }

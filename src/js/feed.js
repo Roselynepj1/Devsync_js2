@@ -1,7 +1,7 @@
 import { getPosts, createPost } from './posts.mjs'
 import { populate, mediaControlButtons } from './common.mjs'
 import { postPlaceholder, postTemplate } from './templates/posts.mjs'
-import { createPostEventListener } from './events.mjs'
+import { postFormEventListener } from './events.mjs'
 document.addEventListener('DOMContentLoaded', () => {
   const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
   const dropdownList = [...dropdownElementList].map(
@@ -33,7 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //find the form and attach an event for creating the post
   const createPostForm = document.querySelector('#createPost')
-  createPostEventListener(createPostForm, (post) => {
-    location.reload()
+  postFormEventListener(createPostForm, (post, { clearForm }) => {
+    createPost(post)
+      .then((post) => {
+        clearForm('Post created successfully')
+        setTimeout(() => location.reload(), 3000)
+      })
+      .catch((error) => crossOriginIsolated.log(error))
   })
 })

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DevSync | View Post</title>
+    <meta
+      name="description"
+      content="To keep connected with us please login with your personal info."
+    />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo.svg"
+      type="image/svg+xml"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link href="./css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar fixed-top bg-body-tertiary shadow-sm">
+      <div class="container-sm container-md container-lg">
+        <div class="d-flex w-100">
+          <a class="navbar-brand text-dark col-3 mx-0" href="feed.html">
+            <img
+              src="./assets/images/logo.svg"
+              alt="App Logo"
+              width="30"
+              height="24"
+              class="d-inline-block align-text-top"
+            />
+            View Post
+          </a>
+          <div class="col-6">
+            <div class="d-none d-sm-none d-md-none d-lg-flex">
+              <form action="" class="w-100">
+                <div class="input-group shadow-sm search-bar">
+                  <input
+                    type="search"
+                    name="search"
+                    class="form-control"
+                    placeholder="Search DevSync"
+                    aria-label="Search"
+                    aria-describedby="Search"
+                    minlength="8"
+                    id="search"
+                  />
+                  <span class="input-group-text" id="password"
+                    ><span class="material-symbols-outlined text-secondary fs-5"
+                      >search</span
+                    ></span
+                  >
+                </div>
+              </form>
+            </div>
+          </div>
+          <div
+            class="col-3 d-flex justify-content-end align-items-center gap-3"
+          >
+            <a
+              href="javascript:void(0)"
+              class="d-inline d-sm-none d-md-block d-lg-none"
+              ><span class="material-symbols-outlined text-secondary"
+                >search</span
+              ></a
+            >
+            <div class="dropstart filter-btn">
+              <span
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                class="material-symbols-outlined text-secondary dropdown-toggle"
+                >tune</span
+              >
+              <ul class="dropdown-menu">
+                <li><span class="dropdown-item">Filter posts by</span></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><span class="dropdown-item">Default</span></li>
+                <li><span class="dropdown-item">Most recent</span></li>
+                <li><span class="dropdown-item">Most liked</span></li>
+                <li><span class="dropdown-item">Only following</span></li>
+              </ul>
+            </div>
+            <a href="javascript:void(0)"
+              ><span class="material-symbols-outlined text-secondary"
+                >notifications</span
+              ></a
+            >
+            <a href="javascript:void(0)"
+              ><span class="material-symbols-outlined text-secondary"
+                >chat</span
+              ></a
+            >
+            <a
+              href="profile.html"
+              class="d-none d-sm-none d-md-none d-lg-inline-flex"
+            >
+              <img
+                src="./assets/images/profile.svg"
+                width="24"
+                height="24"
+                alt="User profile image"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="container-sm container-md container-lg container-xl container-xxl feed-content-area"
+    >
+      <div class="row mt-5 pt-2 position-relative vh-100 overflow-hidden">
+        <div
+          class="col-3 min-vh-100 p-3 d-flex flex-column feed-leftbar d-none d-sm-none d-md-none d-lg-flex"
+        >
+          <div class="d-flex gap-3">
+            <span class="material-symbols-outlined text-dark">groups</span>
+            <span class="text-primary">Your Communities</span>
+          </div>
+          <div class="d-flex gap-3">
+            <img src="./assets/images/react.svg" alt="React JS logo" />
+            <span class="text-dark fw-semibold">Reactjs Fellows</span>
+          </div>
+          <div class="d-flex gap-3">
+            <img src="./assets/images/python.svg" alt="Python logo" />
+            <span class="text-dark fw-semibold">Pythonics</span>
+          </div>
+          <div class="d-flex gap-3">
+            <img src="./assets/images/Angular.svg" alt="Angular logo" />
+            <span class="text-dark fw-semibold">The Angulars</span>
+          </div>
+          <div class="d-flex gap-3">
+            <img src="./assets/images/vue.svg" alt="Vue logo" />
+            <span class="text-dark fw-semibold">Model Vue Controller</span>
+          </div>
+          <div class="d-flex gap-3">
+            <img src="./assets/images/vanilla-js.svg" alt="Vue logo" />
+            <span class="text-dark fw-semibold">Vanilla JS Baby</span>
+          </div>
+          <div class="d-flex gap-3">
+            <span class="material-symbols-outlined text-dark">today</span>
+            <span class="text-dark fw-semibold">Events</span>
+          </div>
+          <div class="d-flex gap-3">
+            <span class="material-symbols-outlined text-dark">trending_up</span>
+            <span class="text-dark fw-semibold">Trending</span>
+          </div>
+          <div class="d-flex gap-3">
+            <span class="material-symbols-outlined text-dark">bookmark</span>
+            <span class="text-dark fw-semibold">Bookmarks</span>
+          </div>
+          <div class="d-flex gap-3">
+            <span class="material-symbols-outlined text-dark"
+              >support_agent</span
+            >
+            <span class="text-dark fw-semibold">Help & Support</span>
+          </div>
+          <div class="d-flex gap-3">
+            <span class="material-symbols-outlined text-dark">settings</span>
+            <span class="text-dark fw-semibold">Settings & Privacy</span>
+          </div>
+
+          <a
+            href="feed.html#createPost"
+            class="btn btn-primary d-flex align-items-center justify-content-center gap-1"
+          >
+            <span class="material-symbols-outlined text-white fs-5"
+              >ink_pen</span
+            >
+            <span class="text-capitalize text-white">Create</span>
+          </a>
+        </div>
+
+        <div
+          class="col-12 col-md-12 col-lg-6 col-xl-6 bg-light feed-area p-2 pb-5 al" 
+        >
+          
+
+          <!-- Create a post end -->
+          <div class="posts-placeholders"></div>
+          <div class="posts-area"></div>
+        </div>
+        <!-- Posts end -->
+        <div
+          class="col-3 py-2 px-3 pe-0 position-sticky d-flex flex-column feed-rightbar d-sm-none d-md-none d-lg-flex"
+        >
+          <h6>Suggested</h6>
+          <div class="card p-3 community-card shadow-sm text-white rounded-3">
+            <div class="d-flex gap-2 mb-3">
+              <span class="material-symbols-outlined"
+                >supervised_user_circle</span
+              >
+              <span>Communities</span>
+            </div>
+            <p>New ways to find and join communities</p>
+            <button class="btn btn-light">Find your communities</button>
+          </div>
+          <h6 class="mt-4">You might like</h6>
+
+          <div class="card shadow-sm">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex follow-card align-items-center">
+                <img src="./assets/images/user_10.svg" alt="User 1" />
+                <div class="d-flex flex-column ms-3">
+                  <span class="mb-0 username">Ethan Walker</span>
+                  <span class="user-handle">@walker</span>
+                </div>
+                <button class="follow-btn btn btn-sm border-primary ms-auto">
+                  Follow
+                </button>
+              </li>
+              <li class="list-group-item d-flex follow-card align-items-center">
+                <img src="./assets/images/user_11.svg" alt="User 1" />
+                <div class="d-flex flex-column ms-3">
+                  <span class="mb-0 username">Lowbudget Zuck</span>
+                  <span class="user-handle">@lowbugetzuck</span>
+                </div>
+                <button class="follow-btn btn btn-sm border-primary ms-auto">
+                  Follow
+                </button>
+              </li>
+              <li class="list-group-item d-flex follow-card align-items-center">
+                <img src="./assets/images/user_12.svg" alt="User 1" />
+                <div class="d-flex flex-column ms-3">
+                  <span class="mb-0 username">Mia Sanchez</span>
+                  <span class="user-handle">@miasanchez</span>
+                </div>
+                <button class="follow-btn btn btn-sm border-primary ms-auto">
+                  Follow
+                </button>
+              </li>
+              <li class="list-group-item d-flex follow-card align-items-center">
+                <img src="./assets/images/user_13.svg" alt="User 1" />
+                <div class="d-flex flex-column ms-3">
+                  <span class="mb-0 username">Olivia Hartman</span>
+                  <span class="user-handle">@hartman</span>
+                </div>
+                <button class="follow-btn btn btn-sm border-primary ms-auto">
+                  Follow
+                </button>
+              </li>
+              <li class="list-group-item d-flex follow-card align-items-center">
+                <img src="./assets/images/user_14.svg" alt="User 1" />
+                <div class="d-flex flex-column ms-3">
+                  <span class="mb-0 username">Maya Patel</span>
+                  <span class="user-handle">@mayapatel</span>
+                </div>
+                <button class="follow-btn btn btn-sm border-primary ms-auto">
+                  Follow
+                </button>
+              </li>
+              <li class="list-group-item">
+                <a
+                  href="javascript:void(0)"
+                  class="fw-medium fs-6 text-decoration-none"
+                  >Show more</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botoom navigation -->
+    <nav class="navbar fixed-bottom bg-body-tertiary shadow-sm d-lg-none">
+      <div class="container-sm container-md container-lg">
+        <div class="hstack justify-content-evenly w-100 mobile-icons">
+          <a
+            href="feed.html"
+            class="vstack text-decoration-none align-items-center text-dark"
+          >
+            <span class="material-symbols-outlined">home</span>
+            <small>Home</small>
+          </a>
+          <a
+            href="feed.html"
+            class="vstack text-decoration-none align-items-center text-dark"
+          >
+            <span class="material-symbols-outlined">groups</span>
+            <small>Communities</small>
+          </a>
+          <a
+            href="profile.html"
+            class="vstack text-decoration-none align-items-center text-dark"
+          >
+            <span class="material-symbols-outlined">account_circle</span>
+            <small>Profile</small>
+          </a>
+          <a
+            href="feed.html"
+            class="vstack text-decoration-none align-items-center text-dark"
+          >
+            <span class="material-symbols-outlined">bookmark</span>
+            <small>Bookmarks</small>
+          </a>
+          <a
+            href="feed.html"
+            class="vstack text-decoration-none align-items-center text-dark"
+          >
+            <span class="material-symbols-outlined">settings</span>
+            <small>Settings</small>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- Bottom Create post icon for mobile only -->
+
+    <a
+      href="post.html"
+      class="position-fixed floating-icon d-lg-none d-xl-none d-xxl-none"
+      ><span class="material-symbols-outlined text-white">edit</span></a
+    >
+  </body>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/view-post.mjs" type="module"></script>
+</html>

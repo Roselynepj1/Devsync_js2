@@ -1,4 +1,4 @@
-import auth from './auth.js'
+import auth from './auth.mjs'
 import { signupValidation } from './common.mjs'
 
 document.addEventListener('DOMContentLoaded', () => {

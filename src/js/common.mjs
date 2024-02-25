@@ -238,7 +238,20 @@ export const mediaControlButtons = () => {
   mediaToggleButtons.forEach((element) => {
     element.addEventListener('click', () => toggleInput(mediaUrlInput))
   })
+
+  return { urlInput: mediaUrlInput, tagsInput: tagsInput }
 }
 
+export const getSearchParams = (key) => {
+  const searchString = window.location.search
+  const urlSearchParams = new URLSearchParams(searchString)
+  return urlSearchParams.get(key)
+}
 
+export const hideElement = (element) => {
+  element.classList.add('d-none')
+}
 
+export const showElement = (element) => {
+  element.classList.remove('d-none')
+}
