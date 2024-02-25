@@ -88,7 +88,13 @@ export const postTemplate = (post) => {
   const blockText = createElement('span', [], { textContent: 'Block user' })
   const dropdownItemAnchorUpdate = createElement(
     'a',
-    ['dropdown-item', 'hstack', 'align-items-center', 'gap-3'],
+    [
+      'dropdown-item',
+      'hstack',
+      'align-items-center',
+      'gap-3',
+      'd-none','d-sm-none', 'd-md-none', 'd-lg-flex',
+    ],
     { href: `edit-post.html?post_id=${id}` }
   )
   const updateIcon = createElement(
@@ -96,7 +102,25 @@ export const postTemplate = (post) => {
     ['material-symbols-outlined', 'fs-5'],
     { textContent: 'edit' }
   )
+  const dropdownItemAnchorUpdateMobile = createElement(
+    'a',
+    [
+      'dropdown-item',
+      'hstack',
+      'align-items-center',
+      'gap-3',
+      'd-flex', 'd-sm-flex', 'd-md-flex', 'd-lg-none',
+    ],
+    { href: `post.html?post_id=${id}` }
+  )
+  const updateIconMobile = createElement(
+    'span',
+    ['material-symbols-outlined', 'fs-5'],
+    { textContent: 'edit' }
+  )
   const updateText = createElement('span', [], { textContent: 'Update post' })
+  const updateTextMobile = createElement('span', [], { textContent: 'Update post' })
+
   const dropdownItemAnchorDelete = createElement(
     'a',
     ['dropdown-item', 'hstack', 'align-items-center', 'gap-3'],
@@ -215,8 +239,11 @@ export const postTemplate = (post) => {
   } else {
     //update link
     dropdownItemAnchorUpdate.appendChild(updateIcon)
+    dropdownItemAnchorUpdateMobile.appendChild(updateIconMobile)
     dropdownItemAnchorUpdate.appendChild(updateText)
+    dropdownItemAnchorUpdateMobile.appendChild(updateTextMobile)
     dropdownMenuItemLi.appendChild(dropdownItemAnchorUpdate)
+    dropdownMenuItemLi.appendChild(dropdownItemAnchorUpdateMobile)
     //delete link
     dropdownItemAnchorDelete.appendChild(deleteIcon)
     dropdownItemAnchorDelete.appendChild(deleteText)
