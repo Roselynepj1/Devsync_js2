@@ -2,14 +2,14 @@ import { PROFILE_URL } from '../utilities/contants.mjs'
 import auth from './auth.mjs'
 
 export const getProfiles = async ({
-  sortOrder = 'desc',
+  sortOrder = 'asc',
   limit = 50,
   followers = true,
   following = true,
   posts = false,
 } = {}) => {
   const response = await auth.authFetch(
-    `${PROFILE_URL}?sortOrder=${sortOrder}&limit=${limit}&_followers=${followers}&_following=${following}&posts=${posts}`,
+    `${PROFILE_URL}?sortOrder=${sortOrder}&offset=100&_followers=${followers}&_following=${following}&posts=${posts}`,
     {
       method: 'GET',
     }
