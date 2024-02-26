@@ -1,4 +1,5 @@
-import {  deletePost } from './posts.mjs'
+import auth from '../requests/auth.mjs'
+import { deletePost } from '../requests/posts.mjs'
 
 export const postFormEventListener = (form, callback) => {
   //check if the title is provided
@@ -81,4 +82,28 @@ export const deletePostEventListener = (element, postId) => {
       postCard.classList.add('d-none')
     })
   })
+}
+
+export const setFormUserToCurrentUserLoggedIn = () => {
+  //load the user details
+  const user = auth.getUser()
+  if (!user) return
+
+  //get the form elements
+  const username = document.querySelector('.current-username')
+  const handle = document.querySelector('.current-username-handle')
+  const avatar = document.querySelector('.username-avatar')
+
+  username.textContent = user.name
+  handle.textContent = '@' + user.name
+  user.avatar && (avatar.src = user.avatar)
+}
+
+
+export const setCurrentUserMenuAvatar = ()=>{
+  const avatar = document.querySelector('.current-user')
+  //load the user
+  const user = auth.getUser()
+  if(!user) return  
+  user.avatar && (avatar.src = user.avatar)
 }

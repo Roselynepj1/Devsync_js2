@@ -66,7 +66,7 @@
                 >search</span
               ></a
             >
-            <div class="dropstart filter-btn">
+            <!-- <div class="dropstart filter-btn">
               <span
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -81,7 +81,7 @@
                 <li><span class="dropdown-item">Most liked</span></li>
                 <li><span class="dropdown-item">Only following</span></li>
               </ul>
-            </div>
+            </div> -->
             <a href="javascript:void(0)"
               ><span class="material-symbols-outlined text-secondary"
                 >notifications</span
@@ -97,7 +97,8 @@
               class="d-none d-sm-none d-md-none d-lg-inline-flex"
             >
               <img
-                src="./assets/images/profile.svg"
+                src="./assets/images/avatar.svg"
+                class="current-user bg-light rounded-circle"
                 width="24"
                 height="24"
                 alt="User profile image"
@@ -364,5 +365,6 @@
     >
   </body>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/global.mjs" type="module"></script>
   <script src="./js/edit-post.mjs" type="module"></script>
 </html>

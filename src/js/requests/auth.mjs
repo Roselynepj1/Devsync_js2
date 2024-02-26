@@ -1,4 +1,4 @@
-import { API_URL } from './contants.mjs'
+import { API_URL } from '../utilities/contants.mjs'
 
 const login = async (user) => {
   const { email, password } = user
@@ -45,7 +45,9 @@ const getAccessToken = () => {
 const saveAccessToken = (token) => {
   localStorage.setItem('authToken', token)
 }
-
+const deleteAccessToken = () => {
+  return localStorage.removeItem('authToken')
+}
 const saveUser = (user) => {
   localStorage.setItem('authUser', JSON.stringify(user))
 }
@@ -57,6 +59,10 @@ const getUser = () => {
   } catch {
     return null
   }
+}
+
+const deleteUser = () => {
+  return localStorage.removeItem('authUser')
 }
 
 const authFetch = async (url, options) => {
@@ -74,13 +80,22 @@ const authFetch = async (url, options) => {
   })
 }
 
-export const isCurrentUser = (user)=>{
+const isCurrentUser = (user) => {
   const currentUser = getUser()
 
-  if(!currentUser) return false 
+  if (!currentUser) return false
 
   return currentUser.email.toLowerCase() === user.email.toLowerCase()
+}
 
+const deleteAuth = () => {
+  //delete the user
+  deleteUser()
+  deleteAccessToken()
+}
+
+const logout = () => {
+  deleteAuth()
 }
 
 export default {
@@ -91,4 +106,6 @@ export default {
   getUser,
   saveUser,
   authFetch,
+  isCurrentUser,
+  logout,
 }

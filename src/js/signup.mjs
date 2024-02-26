@@ -1,5 +1,5 @@
-import auth from './auth.mjs'
-import { signupValidation } from './common.mjs'
+import auth from './requests/auth.mjs'
+import { signupValidation } from './utilities/common.mjs'
 
 document.addEventListener('DOMContentLoaded', () => {
   const signupForm = document.getElementById('signup-form')

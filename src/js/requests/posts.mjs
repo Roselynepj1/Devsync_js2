@@ -1,5 +1,5 @@
 import auth from './auth.mjs'
-import { POSTS_URL } from './contants.mjs'
+import { POSTS_URL, FOLLOWING_URL } from '../utilities/contants.mjs'
 
 export const getPosts = async ({
   sortOrder = 'desc',
@@ -61,4 +61,31 @@ export const getPost = async (postId) => {
     }
   )
   return await response.json()
+}
+
+export const getPostsByFollowing = async () => {
+  const response = await auth.authFetch(
+    `${FOLLOWING_URL}?_author=true&_reactions=true&_comments=true`,
+    {
+      method: 'GET',
+    }
+  )
+  return await response.json()
+}
+
+export const createComment = async (postId, comment) => {
+  const response = await auth.authFetch(
+    `${POSTS_URL}/${postId}/comment?_author=true`,
+    {
+      method: 'POST',
+      body: JSON.stringify(comment),
+    }
+  )
+  return await response.json()
+}
+
+export const deleteComment = async (postId, commentId) => {
+  return await auth.authFetch(`${POSTS_URL}/${postId}/comment/${commentId}`, {
+    method: 'DELETE',
+  })
 }

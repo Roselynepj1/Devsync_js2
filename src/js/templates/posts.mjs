@@ -1,12 +1,18 @@
-import { isCurrentUser } from '../auth.mjs'
-import { likePost } from '../posts.mjs'
-import { createElement, getTimeAgo, formatNumber } from '../common.mjs'
-import { deletePostEventListener } from '../events.mjs'
+import auth from '../requests/auth.mjs'
+import { deleteComment, likePost } from '../requests/posts.mjs'
+import {
+  createElement,
+  getTimeAgo,
+  formatNumber,
+  showElement,
+  hideElement,
+} from '../utilities/common.mjs'
+import { deletePostEventListener } from '../utilities/events.mjs'
 
 export const postTemplate = (post) => {
   const { id, author, body, media, created, _count } = post
   //check if the logged in user is the post author
-  const checkUser = isCurrentUser(author)
+  const checkUser = auth.isCurrentUser(author)
   // Create elements
   const postDiv = createElement(
     'div',
@@ -93,7 +99,10 @@ export const postTemplate = (post) => {
       'hstack',
       'align-items-center',
       'gap-3',
-      'd-none','d-sm-none', 'd-md-none', 'd-lg-flex',
+      'd-none',
+      'd-sm-none',
+      'd-md-none',
+      'd-lg-flex',
     ],
     { href: `edit-post.html?post_id=${id}` }
   )
@@ -102,6 +111,7 @@ export const postTemplate = (post) => {
     ['material-symbols-outlined', 'fs-5'],
     { textContent: 'edit' }
   )
+  const updateText = createElement('span', [], { textContent: 'Update post' })
   const dropdownItemAnchorUpdateMobile = createElement(
     'a',
     [
@@ -109,7 +119,10 @@ export const postTemplate = (post) => {
       'hstack',
       'align-items-center',
       'gap-3',
-      'd-flex', 'd-sm-flex', 'd-md-flex', 'd-lg-none',
+      'd-flex',
+      'd-sm-flex',
+      'd-md-flex',
+      'd-lg-none',
     ],
     { href: `post.html?post_id=${id}` }
   )
@@ -118,8 +131,9 @@ export const postTemplate = (post) => {
     ['material-symbols-outlined', 'fs-5'],
     { textContent: 'edit' }
   )
-  const updateText = createElement('span', [], { textContent: 'Update post' })
-  const updateTextMobile = createElement('span', [], { textContent: 'Update post' })
+  const updateTextMobile = createElement('span', [], {
+    textContent: 'Update post',
+  })
 
   const dropdownItemAnchorDelete = createElement(
     'a',
@@ -147,9 +161,10 @@ export const postTemplate = (post) => {
     {
       src: media,
       loading: 'lazy',
-      style: 'height: 200px !important;object-fit: cover;',
+      style: 'height: 350px !important;object-fit: cover;',
     }
   )
+
   const viewPostLink = createElement(
     'a',
     ['post-body', 'mb-2', 'text-decoration-none'],
@@ -282,7 +297,7 @@ export const postTemplate = (post) => {
 export const postDetailsTemplate = (post) => {
   const { id, author, body, title, media, created, _count } = post
   //check if the logged in user is the post author
-  const checkUser = isCurrentUser(author)
+  const checkUser = auth.isCurrentUser(author)
   // Create elements
   const postDiv = createElement(
     'div',
@@ -365,7 +380,7 @@ export const postDetailsTemplate = (post) => {
   const dropdownItemAnchorUpdate = createElement(
     'a',
     ['dropdown-item', 'hstack', 'align-items-center', 'gap-3'],
-    { href: `edit-post.hml?post_id=${id}` }
+    { href: `edit-post.html?post_id=${id}` }
   )
   const updateIcon = createElement(
     'span',
@@ -373,6 +388,28 @@ export const postDetailsTemplate = (post) => {
     { textContent: 'edit' }
   )
   const updateText = createElement('span', [], { textContent: 'Update post' })
+  const dropdownItemAnchorUpdateMobile = createElement(
+    'a',
+    [
+      'dropdown-item',
+      'hstack',
+      'align-items-center',
+      'gap-3',
+      'd-flex',
+      'd-sm-flex',
+      'd-md-flex',
+      'd-lg-none',
+    ],
+    { href: `post.html?post_id=${id}` }
+  )
+  const updateIconMobile = createElement(
+    'span',
+    ['material-symbols-outlined', 'fs-5'],
+    { textContent: 'edit' }
+  )
+  const updateTextMobile = createElement('span', [], {
+    textContent: 'Update post',
+  })
   const dropdownItemAnchorDelete = createElement(
     'a',
     ['dropdown-item', 'hstack', 'align-items-center', 'gap-3'],
@@ -457,6 +494,20 @@ export const postDetailsTemplate = (post) => {
   const commentsSpan = createElement('span', ['fw-medium'], {
     textContent: formatNumber(_count['comments']),
   })
+
+  //create a call back that can update the the comment count
+
+  const updateCommentTotal = (state = 'add' | 'remove') => {
+    let total = Number(_count['comments'])
+    if (state === 'add') {
+      total++
+    } else {
+      total > 0 && total--
+    }
+    //update the comments count
+    _count['comments'] = total
+    commentsSpan.textContent = formatNumber(total)
+  }
   const shareDiv = createElement('div', ['hstack', 'gap-2'])
   const shareSpan = createElement('span', [], { textContent: 'share' })
   const shareImg = createElement('img', [], {
@@ -487,6 +538,9 @@ export const postDetailsTemplate = (post) => {
     dropdownItemAnchorUpdate.appendChild(updateIcon)
     dropdownItemAnchorUpdate.appendChild(updateText)
     dropdownMenuItemLi.appendChild(dropdownItemAnchorUpdate)
+    dropdownItemAnchorUpdateMobile.appendChild(updateIconMobile)
+    dropdownItemAnchorUpdateMobile.appendChild(updateTextMobile)
+    dropdownMenuItemLi.appendChild(dropdownItemAnchorUpdateMobile)
     //delete link
     dropdownItemAnchorDelete.appendChild(deleteIcon)
     dropdownItemAnchorDelete.appendChild(deleteText)
@@ -519,7 +573,7 @@ export const postDetailsTemplate = (post) => {
   postDiv.appendChild(postBodyDiv)
   postDiv.appendChild(postActionsDiv)
 
-  return postDiv
+  return { postDiv, updateCommentTotal }
 }
 
 export const postPlaceholder = () => {
@@ -625,13 +679,21 @@ export const postNotFound = () => {
   return outerDiv
 }
 
-export const commentTemplate = (comment) => {
-  const { body, author, created } = comment
+export const commentTemplate = (comment, updateCommentsTotal) => {
+  const { id: commentId, postId, body, author, created } = comment
+  //check if author is the current logged in user
+  const checkUser = auth.isCurrentUser(author)
   // Create the outer div element
   const commentDiv = createElement('div', ['card', 'p-2', 'mb-2'])
 
   // Create the inner div for the hstack
-  const hstackDiv = createElement('div', ['hstack', 'gap-3'])
+  const hstackDiv = createElement('div', [
+    'hstack',
+    'gap-3',
+    'align-items-sm-start',
+    'align-items-md-start',
+    'align-items-lg-start',
+  ])
 
   // Create the anchor tag for the owner profile
   const ownerProfileLink = createElement('a', [], {
@@ -643,7 +705,7 @@ export const commentTemplate = (comment) => {
     'img',
     ['rounded-circle', 'bg-light'],
     {
-      src: author['avatar'] || 'images/avatar.svg',
+      src: author['avatar'] || 'assets/images/avatar.svg',
       height: '30',
       width: '30',
       alt: '',
@@ -659,6 +721,27 @@ export const commentTemplate = (comment) => {
   // Create the vstack div
   const vstackDiv = createElement('div', ['vstack'])
   const headDiv = createElement('div', ['hstack', 'gap-1'])
+
+  //delete comment icon
+  const deleteIcon = createElement(
+    'span',
+    ['material-symbols-outlined', 'ms-auto'],
+    {
+      textContent: 'delete',
+    }
+  )
+
+  //add an event for deleting the comment
+  deleteIcon.addEventListener('click', () => {
+    const result = confirm('Are you sure yoDelete this comment permanently?')
+    if (!result) return
+
+    //delete the comment and hide this element
+    deleteComment(postId, commentId).then(() => {
+      hideElement(commentDiv)
+      updateCommentsTotal('remove')
+    })
+  })
 
   // Create the owner name link
   const ownerNameLink = createElement('a', ['text-decoration-none'], {
@@ -679,6 +762,7 @@ export const commentTemplate = (comment) => {
   headDiv.appendChild(ownerNameLink)
   headDiv.appendChild(dotSpan)
   headDiv.appendChild(timestampSpan)
+  if (checkUser) headDiv.appendChild(deleteIcon)
   vstackDiv.appendChild(headDiv)
 
   // Append the vstack div to the hstack div
@@ -692,4 +776,137 @@ export const commentTemplate = (comment) => {
   commentDiv.appendChild(hstackDiv)
 
   return commentDiv
+}
+
+export const postsNotFound = () => {
+  // Create the outer div element
+  const alertDiv = createElement(
+    'div',
+    ['alert', 'hstack', 'gap-2', 'alert-info'],
+    {
+      role: 'alert',
+    }
+  )
+
+  // Create the span for the material symbol
+  const materialSymbolSpan = createElement(
+    'span',
+    ['material-symbols-outlined'],
+    {
+      textContent: 'warning',
+    }
+  )
+
+  // Create the span for the text "No Posts Found"
+  const textSpan = createElement('span', [], {
+    textContent: 'No Posts Found',
+  })
+
+  // Append the material symbol span and text span to the alert div
+  alertDiv.appendChild(materialSymbolSpan)
+  alertDiv.appendChild(textSpan)
+
+  return alertDiv
+}
+
+export const commentFormTemplate = (callback) => {
+  const user = auth.getUser()
+
+  const validateComment = (value) => {
+    if (value == '') {
+      return 'Share something...'
+    }
+    if (value.length < 3 || value.length > 255) {
+      return 'Comment should be between 3 and 255 characters'
+    }
+
+    return null
+  }
+  // Create the form element
+  const form = createElement(
+    'form',
+    ['hstack', 'gap-2', 'my-2', 'card', 'p-2'],
+    {
+      id: 'commentForm',
+    }
+  )
+
+  // Create the image element
+  const img = createElement('img', ['rounded-circle', 'bg-light'], {
+    src: user.avatar || './assets/images/avatar.svg',
+    width: '30',
+    height: '30',
+    alt: `${user.name || user} avatar`,
+  })
+
+  // Create the div element for the input and small element
+  const div = createElement('div', ['vstack', 'gap-1'])
+
+  // Create the input element
+  const input = createElement('input', ['form-control', 'bg-light'], {
+    type: 'text',
+    name: 'body',
+    maxlength: '255',
+    minlength: '3',
+    placeholder: 'Say something...',
+  })
+
+  // Create the small element for error message
+  const small = createElement('small', ['text-danger', 'd-none'])
+
+  // Create the submit button element
+  const button = createElement(
+    'button',
+    ['btn', 'btn-primary', 'text-white', 'btn-sm', 'rounded'],
+    {
+      type: 'submit',
+      disabled: true,
+    }
+  )
+  button.textContent = 'send'
+
+  const addValidation = (error) => {
+    if (!error) {
+      button.removeAttribute('disabled')
+      input.classList.remove('is-invalid')
+      input.classList.add('is-valid')
+      hideElement(small)
+      return
+    } else {
+      button.setAttribute('disabled', true)
+      input.classList.remove('is-valid')
+      input.classList.add('is-invalid')
+      showElement(small)
+      small.textContent = error
+      return
+    }
+  }
+  input.addEventListener('change', (event) => {
+    const error = validateComment(event.target.value)
+    addValidation(error)
+  })
+
+  input.addEventListener('keydown', (event) => {
+    const error = validateComment(event.target.value)
+    addValidation(error)
+  })
+
+  // Append the small element to the div
+  div.appendChild(input)
+  div.appendChild(small)
+
+  // Append the image, div, and button elements to the form
+  form.appendChild(img)
+  form.appendChild(div)
+  form.appendChild(button)
+
+  //add an event listener
+  form.addEventListener('submit', (event) => {
+    event.preventDefault()
+    const formData = new FormData(event.target)
+
+    let comment = Object.fromEntries(formData.entries())
+    callback(comment)
+  })
+  return form
 }

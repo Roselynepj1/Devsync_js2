@@ -1,5 +1,5 @@
-import auth from './auth.mjs'
-import { loginValidation } from './common.mjs'
+import auth from './requests/auth.mjs'
+import { loginValidation } from './utilities/common.mjs'
 
 document.addEventListener('DOMContentLoaded', () => {
   //Login form validation

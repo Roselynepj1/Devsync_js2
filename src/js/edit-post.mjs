@@ -1,9 +1,14 @@
-import { getSearchParams, hideElement, mediaControlButtons } from './common.mjs'
-import { postFormEventListener } from './events.mjs'
-import { getPost, updatePost } from './posts.mjs'
+import { getSearchParams, hideElement, mediaControlButtons } from './utilities/common.mjs'
+import {
+  postFormEventListener,
+  setFormUserToCurrentUserLoggedIn,
+} from './utilities/events.mjs'
+import { getPost, updatePost } from './requests/posts.mjs'
 import { postNotFound } from './templates/posts.mjs'
 
 document.addEventListener('DOMContentLoaded', () => {
+  //Find the form user details and update them
+  setFormUserToCurrentUserLoggedIn()
   //Find the form buttons for showing media url
   const { urlInput, tagsInput } = mediaControlButtons()
 
