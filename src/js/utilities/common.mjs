@@ -255,3 +255,10 @@ export const hideElement = (element) => {
 export const showElement = (element) => {
   element.classList.remove('d-none')
 }
+
+
+export const searchLikeSQL = (searchWord, text) => { 
+  const escapedSearchWord = searchWord.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') // Escape special characters
+  const pattern = new RegExp(escapedSearchWord, 'i') // 'i' flag for case-insensitive search
+  return pattern.test(text)
+}
