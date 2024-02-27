@@ -3,12 +3,13 @@ import { POSTS_URL, FOLLOWING_URL } from '../utilities/contants.mjs'
 
 export const getPosts = async ({
   sortOrder = 'desc',
-  limit = 50,
+  limit = 20,
   author = true,
   reactions = true,
+  offset=0
 } = {}) => {
   const response = await auth.authFetch(
-    `${POSTS_URL}?sortOrder=${sortOrder}&limit=${limit}&_author=${author}&_reactions=${reactions}`,
+    `${POSTS_URL}?sortOrder=${sortOrder}&limit=${limit}&_author=${author}&_reactions=${reactions}&offset=${offset}`,
     {
       method: 'GET',
     }

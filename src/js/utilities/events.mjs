@@ -107,3 +107,12 @@ export const setCurrentUserMenuAvatar = ()=>{
   if(!user) return  
   user.avatar && (avatar.src = user.avatar)
 }
+
+export const addScrollMoreEvent = (element,callback)=>{
+  element.addEventListener('scroll', function () {
+    if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+      callback()
+    }
+  })
+}
+

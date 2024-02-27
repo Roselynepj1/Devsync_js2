@@ -256,9 +256,18 @@ export const showElement = (element) => {
   element.classList.remove('d-none')
 }
 
-
-export const searchLikeSQL = (searchWord, text) => { 
+export const searchLikeSQL = (searchWord, text) => {
   const escapedSearchWord = searchWord.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') // Escape special characters
   const pattern = new RegExp(escapedSearchWord, 'i') // 'i' flag for case-insensitive search
   return pattern.test(text)
+}
+
+export const debounce = (func, timeout = 300) => {
+  let timer
+  return (...args) => {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      func.apply(this, args)
+    }, timeout)
+  }
 }

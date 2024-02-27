@@ -440,7 +440,7 @@ export const postDetailsTemplate = (post) => {
     {
       src: media,
       loading: 'lazy',
-      style: 'height: 200px !important;object-fit:cover;',
+      style: 'height: 350px !important;object-fit:cover;',
     }
   )
 
@@ -725,7 +725,7 @@ export const commentTemplate = (comment, updateCommentsTotal) => {
   //delete comment icon
   const deleteIcon = createElement(
     'span',
-    ['material-symbols-outlined', 'ms-auto'],
+    ['material-symbols-outlined', 'ms-auto','pointer'],
     {
       textContent: 'delete',
     }

@@ -47,11 +47,11 @@
                     minlength="8"
                     id="search"
                   />
-                  <button type="submit" class="input-group-text" id="password"
-                    ><span class="material-symbols-outlined text-secondary fs-5"
+                  <button type="submit" class="input-group-text" id="password">
+                    <span class="material-symbols-outlined text-secondary fs-5"
                       >search</span
-                    ></button
-                  >
+                    >
+                  </button>
                 </div>
               </form>
             </div>
@@ -60,7 +60,7 @@
             class="col-3 d-flex justify-content-end align-items-center gap-3"
           >
             <a
-              href="javascript:void(0)"
+              href="search-results.html"
               class="d-inline d-sm-none d-md-block d-lg-none"
               ><span class="material-symbols-outlined text-secondary"
                 >search</span
@@ -76,8 +76,12 @@
               <ul class="dropdown-menu">
                 <li><span class="dropdown-item">Filter posts by</span></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li id="sortByDefault" class="pointer"><span class="dropdown-item">Default</span></li> 
-                <li id="sortByFollowing" class="pointer"><span class="dropdown-item">Only following</span></li>
+                <li id="sortByDefault" class="pointer">
+                  <span class="dropdown-item">Default</span>
+                </li>
+                <li id="sortByFollowing" class="pointer">
+                  <span class="dropdown-item">Only following</span>
+                </li>
               </ul>
             </div>
             <a href="javascript:void(0)"
@@ -89,7 +93,7 @@
               ><span class="material-symbols-outlined text-secondary"
                 >chat</span
               ></a
-            > 
+            >
             <a
               href="profile.html"
               class="d-none d-sm-none d-md-none d-lg-inline-flex"
@@ -175,7 +179,8 @@
         <div
           class="col-12 col-md-12 col-lg-6 col-xl-6 bg-light feed-area p-2 pb-5"
         >
-          <form id="createPost"
+          <form
+            id="createPost"
             class="create-post card p-3 mb-3 d-none d-sm-none d-md-none d-lg-block"
           >
             <div class="create-post-head">
@@ -195,36 +200,82 @@
             </div>
             <div class="card-body p-0 my-3">
               <small class="text-success d-none success-helper"></small>
-              <input type="text" required placeholder="Post title" name="title" class="form-control mb-2 bg-light" maxlength="255">
+              <input
+                type="text"
+                required
+                placeholder="Post title"
+                name="title"
+                class="form-control mb-2 bg-light"
+                maxlength="255"
+              />
               <small class="text-danger d-none title-helper"></small>
-              <textarea required
-              id="post-body"
-              name="body"
-              maxlength="280"
-              class="form-control bg-light"
-              placeholder="Share what's new ..."
+              <textarea
+                required
+                id="post-body"
+                name="body"
+                maxlength="280"
+                class="form-control bg-light"
+                placeholder="Share what's new ..."
               ></textarea>
               <small class="text-danger d-none body-helper"></small>
             </div>
             <div class="hstack">
               <div class="hstack gap-2">
-                <span class="material-symbols-outlined pointer  show-media-url-input">photo_camera</span>
-                <span class="material-symbols-outlined pointer  show-media-url-input">videocam</span>
-                <span class="material-symbols-outlined pointer  show-media-url-input">gif_box</span>
+                <span
+                  class="material-symbols-outlined pointer show-media-url-input"
+                  >photo_camera</span
+                >
+                <span
+                  class="material-symbols-outlined pointer show-media-url-input"
+                  >videocam</span
+                >
+                <span
+                  class="material-symbols-outlined pointer show-media-url-input"
+                  >gif_box</span
+                >
                 <span class="material-symbols-outlined disabled">draft</span>
-                <span class="material-symbols-outlined pointer show-tags-input">sell</span>
-                <input type="url" name="media" class="form-control d-none" id="medialUrl" placeholder="Enter media url">
-                <input type="text" name="tags" maxlength="24" class="form-control d-none" id="tags" placeholder="Tags: i.e trend, fun, code is fun">
+                <span class="material-symbols-outlined pointer show-tags-input"
+                  >sell</span
+                >
+                <input
+                  type="url"
+                  name="media"
+                  class="form-control d-none"
+                  id="medialUrl"
+                  placeholder="Enter media url"
+                />
+                <input
+                  type="text"
+                  name="tags"
+                  maxlength="24"
+                  class="form-control d-none"
+                  id="tags"
+                  placeholder="Tags: i.e trend, fun, code is fun"
+                />
               </div>
               <div class="hstack ms-auto">
-                <button type="submit" disabled id="submitBtn" class="border-0 btn"><span class="material-symbols-outlined text-primary">send</span></button>
+                <button
+                  type="submit"
+                  disabled
+                  id="submitBtn"
+                  class="border-0 btn"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >send</span
+                  >
+                </button>
               </div>
             </div>
           </form>
-          
+
           <!-- Create a post end -->
           <div class="posts-placeholders"></div>
           <div class="posts-area"></div>
+          <div class="loader hstack align-items-center justify-content-center d-none">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
         </div>
         <!-- Posts end -->
         <div
@@ -362,4 +413,3 @@
   <script src="./js/global.mjs" type="module"></script>
   <script src="./js/feed.js" type="module"></script>
 </html>
-

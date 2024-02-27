@@ -44,7 +44,6 @@
                     placeholder="Search DevSync"
                     aria-label="Search"
                     aria-describedby="Search"
-                    minlength="8"
                     id="search"
                   />
                   <button type="submit" class="input-group-text" id="password">
@@ -60,7 +59,7 @@
             class="col-3 d-flex justify-content-end align-items-center gap-3"
           >
             <a
-              href="javascript:void(0)"
+              href="search-results.html"
               class="d-inline d-sm-none d-md-block d-lg-none"
               ><span class="material-symbols-outlined text-secondary"
                 >search</span
@@ -178,7 +177,28 @@
 
         <div
           class="col-12 col-md-12 col-lg-6 col-xl-6 bg-light feed-area p-2 pb-5"
-        > 
+        >
+        <!-- Mobile search form -->
+        <div class="d-flex d-sm-flex d-md-flex d-lg-none">
+              <form action="search-results.html" class="w-100">
+                <div class="input-group shadow-sm search-bar">
+                  <input
+                    type="search"
+                    name="search"
+                    class="form-control"
+                    placeholder="Search DevSync"
+                    aria-label="Search"
+                    aria-describedby="Search"
+                    id="search"
+                  />
+                  <button type="submit" class="input-group-text" id="password">
+                    <span class="material-symbols-outlined text-secondary fs-5"
+                      >search</span
+                    >
+                  </button>
+                </div>
+              </form>
+            </div>
           <!-- Tab contents -->
           <ul class="nav nav-pills my-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -194,7 +214,7 @@
               >
                 Posts
               </button>
-            </li> 
+            </li>
           </ul>
           <div class="tab-content" id="pills-tabContent">
             <div
@@ -205,9 +225,18 @@
               tabindex="0"
             >
               <!-- Posts to be shown here -->
-              <div class="postsPlaceholders"></div>
+              <div class="postsPlaceholders">
+                <p id="no-search" class="d-none">Search something...</p>
+              </div>
               <div class="postsFiltered"></div>
-            </div> 
+              <div
+                class="loader hstack align-items-center justify-content-center d-none mb-5 pb-5"
+              >
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <!-- Posts end -->

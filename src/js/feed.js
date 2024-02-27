@@ -25,7 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
     '.posts-placeholders'
   )
   const postsContainer = document.querySelector('.posts-area')
-
+  const postsLoader = document.querySelector('.loader')
+  let offset = 0 //defines the starting point will be incremented to search more
+  const postsPerPage = 10
   try {
     populate(postsPlaceHolderContainer, postPlaceholder, 5)
     getPosts().then((posts) => {
@@ -39,6 +41,24 @@ document.addEventListener('DOMContentLoaded', () => {
   } catch {
     return
   }
+
+  //add event for searching for new posts when bottom is reached
+  const feedArea = document.querySelector('.feed-area')
+  feedArea.addEventListener('scroll', function () {
+    if (feedArea.scrollHeight - feedArea.scrollTop === feedArea.clientHeight) {
+      //fetch for more more posts
+      showElement(postsLoader)
+      offset += postsPerPage
+      getPosts({ offset }).then((posts) => {
+        hideElement(postsLoader)
+        //populate posts
+        posts.forEach((post) => {
+          // console.log(post)
+          postsContainer.append(postTemplate(post))
+        })
+      })
+    }
+  })
 
   //find the form user details and update them
   setFormUserToCurrentUserLoggedIn()
@@ -65,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sortByDefault.addEventListener('click', () => {
     //clean the posts container
-    postsContainer.innerHTML = ""
+    postsContainer.innerHTML = ''
     //show placeholders
     showElement(postsPlaceHolderContainer)
     //fetch the posts in normal way
