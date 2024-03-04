@@ -35,7 +35,7 @@
           </a>
           <div class="col-6">
             <div class="d-none d-sm-none d-md-none d-lg-flex">
-              <form action="" class="w-100">
+              <form action="search-results.html" class="w-100">
                 <div class="input-group shadow-sm search-bar">
                   <input
                     type="search"
@@ -47,10 +47,10 @@
                     minlength="8"
                     id="search"
                   />
-                  <span class="input-group-text" id="password"
+                  <button type="submit" class="input-group-text" id="password"
                     ><span class="material-symbols-outlined text-secondary fs-5"
                       >search</span
-                    ></span
+                    ></button
                   >
                 </div>
               </form>
@@ -60,7 +60,7 @@
             class="col-3 d-flex justify-content-end align-items-center gap-3"
           >
             <a
-              href="javascript:void(0)"
+              href="search-results.html"
               class="d-inline d-sm-none d-md-block d-lg-none"
               ><span class="material-symbols-outlined text-secondary"
                 >search</span
@@ -364,7 +364,7 @@
       ><span class="material-symbols-outlined text-white">edit</span></a
     >
   </body>
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/js/bootstrap.bundle.min.js"></script>
   <script src="./js/global.mjs" type="module"></script>
   <script src="./js/edit-post.mjs" type="module"></script>
 </html>

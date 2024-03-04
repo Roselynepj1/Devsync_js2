@@ -1,6 +1,12 @@
 import auth from '../requests/auth.mjs'
 import { deletePost } from '../requests/posts.mjs'
 
+
+/**
+ * Attaches event listeners to a post form for validation and submission.
+ * @param {HTMLElement} form - The HTML form element.
+ * @param {Function} callback - The callback function to execute upon form submission.
+ */
 export const postFormEventListener = (form, callback) => {
   //check if the title is provided
   const postTitle = form.querySelector("input[name='title']")
@@ -68,6 +74,12 @@ export const postFormEventListener = (form, callback) => {
   })
 }
 
+
+/**
+ * Attaches an event listener to delete a post.
+ * @param {HTMLElement} element - The HTML element representing the post to be deleted.
+ * @param {string} postId - The ID of the post to be deleted.
+ */
 export const deletePostEventListener = (element, postId) => {
   element.addEventListener('click', (event) => {
     //The post card element is logicalled created as follows
@@ -84,6 +96,10 @@ export const deletePostEventListener = (element, postId) => {
   })
 }
 
+
+/**
+ * Sets the form's user details to the current user logged in.
+ */
 export const setFormUserToCurrentUserLoggedIn = () => {
   //load the user details
   const user = auth.getUser()
@@ -99,7 +115,9 @@ export const setFormUserToCurrentUserLoggedIn = () => {
   user.avatar && (avatar.src = user.avatar)
 }
 
-
+/**
+ * Sets the current user menu avatar.
+ */
 export const setCurrentUserMenuAvatar = ()=>{
   const avatar = document.querySelector('.current-user')
   //load the user
@@ -107,3 +125,18 @@ export const setCurrentUserMenuAvatar = ()=>{
   if(!user) return  
   user.avatar && (avatar.src = user.avatar)
 }
+
+
+/**
+ * Adds a scroll event listener to an element.
+ * @param {HTMLElement} element - The HTML element to attach the scroll event listener to.
+ * @param {Function} callback - The callback function to execute when scrolling to the bottom of the element.
+ */
+export const addScrollMoreEvent = (element,callback)=>{
+  element.addEventListener('scroll', function () {
+    if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+      callback()
+    }
+  })
+}
+

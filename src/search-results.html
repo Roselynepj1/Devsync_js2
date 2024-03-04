@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>DevSync | View Post</title>
+    <title>DevSync | Home</title>
     <meta
       name="description"
       content="To keep connected with us please login with your personal info."
@@ -31,7 +31,7 @@
               height="24"
               class="d-inline-block align-text-top"
             />
-            View Post
+            Search Results
           </a>
           <div class="col-6">
             <div class="d-none d-sm-none d-md-none d-lg-flex">
@@ -44,7 +44,6 @@
                     placeholder="Search DevSync"
                     aria-label="Search"
                     aria-describedby="Search"
-                    minlength="8"
                     id="search"
                   />
                   <button type="submit" class="input-group-text" id="password">
@@ -76,10 +75,12 @@
               <ul class="dropdown-menu">
                 <li><span class="dropdown-item">Filter posts by</span></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><span class="dropdown-item">Default</span></li>
-                <li><span class="dropdown-item">Most recent</span></li>
-                <li><span class="dropdown-item">Most liked</span></li>
-                <li><span class="dropdown-item">Only following</span></li>
+                <li id="sortByDefault" class="pointer">
+                  <span class="dropdown-item">Default</span>
+                </li>
+                <li id="sortByFollowing" class="pointer">
+                  <span class="dropdown-item">Only following</span>
+                </li>
               </ul>
             </div> -->
             <a href="javascript:void(0)"
@@ -175,21 +176,68 @@
         </div>
 
         <div
-          class="col-12 col-md-12 col-lg-6 col-xl-6 bg-light feed-area p-2 pb-5 mb-5 al"
+          class="col-12 col-md-12 col-lg-6 col-xl-6 bg-light feed-area p-2 pb-5"
         >
-          <a
-            class="hstack my-2 gap-2 text-decoration-none"
-            href="javascript:void(0)"
-            onclick="history.back(-1)"
-          >
-            <span class="material-symbols-outlined">arrow_back</span>
-            <span>Go back</span>
-          </a>
-
-          <!-- Create a post end -->
-
-          <div class="posts-placeholders"></div>
-          <div class="posts-area mb-5 pb-5"></div>
+          <!-- Mobile search form -->
+          <div class="d-flex d-sm-flex d-md-flex d-lg-none">
+            <form action="search-results.html" class="w-100">
+              <div class="input-group shadow-sm search-bar">
+                <input
+                  type="search"
+                  name="search"
+                  class="form-control"
+                  placeholder="Search DevSync"
+                  aria-label="Search"
+                  aria-describedby="Search"
+                  id="search"
+                />
+                <button type="submit" class="input-group-text" id="password">
+                  <span class="material-symbols-outlined text-secondary fs-5"
+                    >search</span
+                  >
+                </button>
+              </div>
+            </form>
+          </div>
+          <!-- Tab contents -->
+          <ul class="nav nav-pills my-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="pills-posts-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-posts"
+                type="button"
+                role="tab"
+                aria-controls="pills-posts"
+                aria-selected="true"
+              >
+                Posts
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div
+              class="tab-pane fade show active"
+              id="pills-posts"
+              role="tabpanel"
+              aria-labelledby="pills-posts-tab"
+              tabindex="0"
+            >
+              <!-- Posts to be shown here -->
+              <div class="postsPlaceholders">
+                <p id="no-search" class="d-none">Search something...</p>
+              </div>
+              <div class="postsFiltered"></div>
+              <div
+                class="loader hstack align-items-center justify-content-center d-none mb-5 pb-5"
+              >
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- Posts end -->
         <div
@@ -315,8 +363,17 @@
         </div>
       </div>
     </nav>
+    <!-- Bottom Create post icon for mobile only -->
+
+    <a
+      href="post.html"
+      class="position-fixed floating-icon d-lg-none d-xl-none d-xxl-none"
+      ><span class="material-symbols-outlined text-white">edit</span></a
+    >
   </body>
   <script src="./assets/js/bootstrap.bundle.min.js"></script>
   <script src="./js/global.mjs" type="module"></script>
-  <script src="./js/view-post.mjs" type="module"></script>
+  <script src="./js/search-results.mjs" type="module"></script>
 </html>
+
+

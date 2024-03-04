@@ -35,7 +35,7 @@
           </a>
           <div class="col-6">
             <div class="d-none d-sm-none d-md-none d-lg-flex">
-              <form action="" class="w-100">
+              <form action="search-results.html" class="w-100">
                 <div class="input-group shadow-sm search-bar">
                   <input
                     type="search"
@@ -45,12 +45,13 @@
                     aria-label="Search"
                     aria-describedby="Search"
                     minlength="8"
+                    id="search"
                   />
-                  <span class="input-group-text" id="password"
-                    ><span class="material-symbols-outlined text-secondary fs-5"
+                  <button type="submit" class="input-group-text" id="password">
+                    <span class="material-symbols-outlined text-secondary fs-5"
                       >search</span
-                    ></span
-                  >
+                    >
+                  </button>
                 </div>
               </form>
             </div>
@@ -59,7 +60,7 @@
             class="col-3 d-flex justify-content-end align-items-center gap-3"
           >
             <a
-              href="javascript:void(0)"
+              href="search-results.html"
               class="d-inline d-sm-none d-md-block d-lg-none"
               ><span class="material-symbols-outlined text-secondary"
                 >search</span
@@ -225,9 +226,9 @@
                     alt="User Profile Image"
                   />
                   <div class="vstack ms-2 justify-content-center">
-                  <small class="fw-normal">Roselyn P Johansen</small>
-                  <small class="fw-bold">@roselyne <span>• 1h</span></small>
-                </div>
+                    <small class="fw-normal">Roselyn P Johansen</small>
+                    <small class="fw-bold">@roselyne <span>• 1h</span></small>
+                  </div>
                 </div>
               </div>
               <div class="card-body p-0 my-3">
@@ -624,7 +625,7 @@
       ><span class="material-symbols-outlined text-white">edit</span></a
     >
   </body>
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/js/bootstrap.bundle.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', (event) => {
       const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
