@@ -25,11 +25,7 @@
         <div
           class="col-7 d-none d-lg-flex d-xl-flex justify-content-center align-items-center flex-column login-left"
         >
-          <img
-            src="./assets/images/logo.svg"
-            class="app-logo"
-            alt="App logo"
-          />
+          <img src="./assets/images/logo.svg" class="app-logo" alt="App logo" />
           <h2 class="text-dark">DevSync</h2>
           <h5 class="text-secondary">Your code buddy</h5>
         </div>
@@ -45,6 +41,19 @@
             </p>
             <p class="alert alert-success d-none" id="success-msg">
               Account created successfully
+            </p>
+            <p
+              class="alert alert-danger d-none alert-dismissible fade show"
+              role="alert"
+              id="error"
+            >
+              <span id="error-msg"></span>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+              ></button>
             </p>
           </div>
           <div class="col-12">
@@ -165,8 +174,8 @@
           </div>
         </form>
 
-        <script src="./js/common.js"></script>
-        <script src="./js/signup.js"></script>
+        <script src="./assets/js/bootstrap.bundle.min.js"></script> 
+        <script type="module" src="./js/signup.mjs"></script>
       </div>
     </div>
   </body>

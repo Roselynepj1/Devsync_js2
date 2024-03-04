@@ -47,11 +47,11 @@
                     minlength="8"
                     id="search"
                   />
-                  <button type="submit" class="input-group-text" id="password">
-                    <span class="material-symbols-outlined text-secondary fs-5"
+                  <button type="submit" class="input-group-text" id="password"
+                    ><span class="material-symbols-outlined text-secondary fs-5"
                       >search</span
-                    >
-                  </button>
+                    ></button
+                  >
                 </div>
               </form>
             </div>
@@ -66,7 +66,7 @@
                 >search</span
               ></a
             >
-            <div class="dropstart filter-btn">
+            <!-- <div class="dropstart filter-btn">
               <span
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -76,14 +76,12 @@
               <ul class="dropdown-menu">
                 <li><span class="dropdown-item">Filter posts by</span></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li id="sortByDefault" class="pointer">
-                  <span class="dropdown-item">Default</span>
-                </li>
-                <li id="sortByFollowing" class="pointer">
-                  <span class="dropdown-item">Only following</span>
-                </li>
+                <li><span class="dropdown-item">Default</span></li>
+                <li><span class="dropdown-item">Most recent</span></li>
+                <li><span class="dropdown-item">Most liked</span></li>
+                <li><span class="dropdown-item">Only following</span></li>
               </ul>
-            </div>
+            </div> -->
             <a href="javascript:void(0)"
               ><span class="material-symbols-outlined text-secondary"
                 >notifications</span
@@ -179,91 +177,53 @@
         <div
           class="col-12 col-md-12 col-lg-6 col-xl-6 bg-light feed-area p-2 pb-5"
         >
-          <form
-            id="createPost"
+        <a class="hstack my-2 gap-2 text-decoration-none" href="feed.html">
+            <span class="material-symbols-outlined">arrow_back</span>
+            <span>Go back</span>
+        </a>
+          <form id="editPost"
             class="create-post card p-3 mb-3 d-none d-sm-none d-md-none d-lg-block"
           >
             <div class="create-post-head">
               <div class="hstack current-user">
                 <img
                   src="./assets/images/avatar.svg"
-                  class="bg-light rounded-circle username-avatar"
+                  class="bg-light rounded-circle"
                   width="30"
                   height="30"
                   alt="User Profile Image"
                 />
                 <div class="vstack ms-3 justify-content-center">
-                  <small class="fw-normal current-username">username</small>
-                  <small class="fw-bold current-username-handle">@handle</small>
+                  <small class="fw-normal current-username">Roselyn P Johansen</small>
+                  <small class="fw-bold current-username-handle">@roselyne</small>
                 </div>
               </div>
             </div>
             <div class="card-body p-0 my-3">
               <small class="text-success d-none success-helper"></small>
-              <input
-                type="text"
-                required
-                placeholder="Post title"
-                name="title"
-                class="form-control mb-2 bg-light"
-                maxlength="255"
-              />
+              <input type="text" required placeholder="Post title" name="title" class="form-control mb-2 bg-light" maxlength="255">
               <small class="text-danger d-none title-helper"></small>
-              <textarea
-                required
-                id="post-body"
-                name="body"
-                maxlength="280"
-                class="form-control bg-light"
-                placeholder="Share what's new ..."
+              <textarea required
+              id="post-body"
+              name="body"
+              maxlength="280"
+              class="form-control bg-light"
+              placeholder="Share what's new ..."
               ></textarea>
               <small class="text-danger d-none body-helper"></small>
             </div>
             <div class="hstack">
               <div class="hstack gap-2">
-                <span
-                  class="material-symbols-outlined pointer show-media-url-input"
-                  >photo_camera</span
-                >
-                <span
-                  class="material-symbols-outlined pointer show-media-url-input"
-                  >videocam</span
-                >
-                <span
-                  class="material-symbols-outlined pointer show-media-url-input"
-                  >gif_box</span
-                >
+                <span class="material-symbols-outlined pointer  show-media-url-input">photo_camera</span>
+                <span class="material-symbols-outlined pointer  show-media-url-input">videocam</span>
+                <span class="material-symbols-outlined pointer  show-media-url-input">gif_box</span>
                 <span class="material-symbols-outlined disabled">draft</span>
-                <span class="material-symbols-outlined pointer show-tags-input"
-                  >sell</span
-                >
-                <input
-                  type="url"
-                  name="media"
-                  class="form-control d-none"
-                  id="medialUrl"
-                  placeholder="Enter media url"
-                />
-                <input
-                  type="text"
-                  name="tags"
-                  maxlength="24"
-                  class="form-control d-none"
-                  id="tags"
-                  placeholder="Tags: i.e trend, fun, code is fun"
-                />
+                <span class="material-symbols-outlined pointer show-tags-input">sell</span>
+                <input type="url" name="media" class="form-control d-none" id="medialUrl" placeholder="Enter media url">
+                <input type="text" name="tags" maxlength="24" class="form-control d-none" id="tags" placeholder="Tags: i.e trend, fun, code is fun">
               </div>
               <div class="hstack ms-auto">
-                <button
-                  type="submit"
-                  disabled
-                  id="submitBtn"
-                  class="border-0 btn"
-                >
-                  <span class="material-symbols-outlined text-primary"
-                    >send</span
-                  >
-                </button>
+                <button type="submit" id="submitBtn" class="border-0 btn"><span class="material-symbols-outlined text-primary">send</span></button>
               </div>
             </div>
           </form>
@@ -271,11 +231,6 @@
           <!-- Create a post end -->
           <div class="posts-placeholders"></div>
           <div class="posts-area"></div>
-          <div class="loader hstack align-items-center justify-content-center d-none">
-            <div class="spinner-border text-primary" role="status">
-              <span class="visually-hidden">Loading...</span>
-            </div>
-          </div>
         </div>
         <!-- Posts end -->
         <div
@@ -411,5 +366,5 @@
   </body>
   <script src="./assets/js/bootstrap.bundle.min.js"></script>
   <script src="./js/global.mjs" type="module"></script>
-  <script src="./js/feed.js" type="module"></script>
+  <script src="./js/edit-post.mjs" type="module"></script>
 </html>

@@ -31,7 +31,7 @@
               height="24"
               class="d-inline-block align-text-top"
             />
-            Home
+            Search Results
           </a>
           <div class="col-6">
             <div class="d-none d-sm-none d-md-none d-lg-flex">
@@ -44,7 +44,6 @@
                     placeholder="Search DevSync"
                     aria-label="Search"
                     aria-describedby="Search"
-                    minlength="8"
                     id="search"
                   />
                   <button type="submit" class="input-group-text" id="password">
@@ -66,7 +65,7 @@
                 >search</span
               ></a
             >
-            <div class="dropstart filter-btn">
+            <!-- <div class="dropstart filter-btn">
               <span
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -83,7 +82,7 @@
                   <span class="dropdown-item">Only following</span>
                 </li>
               </ul>
-            </div>
+            </div> -->
             <a href="javascript:void(0)"
               ><span class="material-symbols-outlined text-secondary"
                 >notifications</span
@@ -179,101 +178,64 @@
         <div
           class="col-12 col-md-12 col-lg-6 col-xl-6 bg-light feed-area p-2 pb-5"
         >
-          <form
-            id="createPost"
-            class="create-post card p-3 mb-3 d-none d-sm-none d-md-none d-lg-block"
-          >
-            <div class="create-post-head">
-              <div class="hstack current-user">
-                <img
-                  src="./assets/images/avatar.svg"
-                  class="bg-light rounded-circle username-avatar"
-                  width="30"
-                  height="30"
-                  alt="User Profile Image"
-                />
-                <div class="vstack ms-3 justify-content-center">
-                  <small class="fw-normal current-username">username</small>
-                  <small class="fw-bold current-username-handle">@handle</small>
-                </div>
-              </div>
-            </div>
-            <div class="card-body p-0 my-3">
-              <small class="text-success d-none success-helper"></small>
-              <input
-                type="text"
-                required
-                placeholder="Post title"
-                name="title"
-                class="form-control mb-2 bg-light"
-                maxlength="255"
-              />
-              <small class="text-danger d-none title-helper"></small>
-              <textarea
-                required
-                id="post-body"
-                name="body"
-                maxlength="280"
-                class="form-control bg-light"
-                placeholder="Share what's new ..."
-              ></textarea>
-              <small class="text-danger d-none body-helper"></small>
-            </div>
-            <div class="hstack">
-              <div class="hstack gap-2">
-                <span
-                  class="material-symbols-outlined pointer show-media-url-input"
-                  >photo_camera</span
-                >
-                <span
-                  class="material-symbols-outlined pointer show-media-url-input"
-                  >videocam</span
-                >
-                <span
-                  class="material-symbols-outlined pointer show-media-url-input"
-                  >gif_box</span
-                >
-                <span class="material-symbols-outlined disabled">draft</span>
-                <span class="material-symbols-outlined pointer show-tags-input"
-                  >sell</span
-                >
+          <!-- Mobile search form -->
+          <div class="d-flex d-sm-flex d-md-flex d-lg-none">
+            <form action="search-results.html" class="w-100">
+              <div class="input-group shadow-sm search-bar">
                 <input
-                  type="url"
-                  name="media"
-                  class="form-control d-none"
-                  id="medialUrl"
-                  placeholder="Enter media url"
+                  type="search"
+                  name="search"
+                  class="form-control"
+                  placeholder="Search DevSync"
+                  aria-label="Search"
+                  aria-describedby="Search"
+                  id="search"
                 />
-                <input
-                  type="text"
-                  name="tags"
-                  maxlength="24"
-                  class="form-control d-none"
-                  id="tags"
-                  placeholder="Tags: i.e trend, fun, code is fun"
-                />
-              </div>
-              <div class="hstack ms-auto">
-                <button
-                  type="submit"
-                  disabled
-                  id="submitBtn"
-                  class="border-0 btn"
-                >
-                  <span class="material-symbols-outlined text-primary"
-                    >send</span
+                <button type="submit" class="input-group-text" id="password">
+                  <span class="material-symbols-outlined text-secondary fs-5"
+                    >search</span
                   >
                 </button>
               </div>
-            </div>
-          </form>
-
-          <!-- Create a post end -->
-          <div class="posts-placeholders"></div>
-          <div class="posts-area"></div>
-          <div class="loader hstack align-items-center justify-content-center d-none">
-            <div class="spinner-border text-primary" role="status">
-              <span class="visually-hidden">Loading...</span>
+            </form>
+          </div>
+          <!-- Tab contents -->
+          <ul class="nav nav-pills my-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="pills-posts-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-posts"
+                type="button"
+                role="tab"
+                aria-controls="pills-posts"
+                aria-selected="true"
+              >
+                Posts
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div
+              class="tab-pane fade show active"
+              id="pills-posts"
+              role="tabpanel"
+              aria-labelledby="pills-posts-tab"
+              tabindex="0"
+            >
+              <!-- Posts to be shown here -->
+              <div class="postsPlaceholders">
+                <p id="no-search" class="d-none">Search something...</p>
+              </div>
+              <div class="postsFiltered"></div>
+              <div
+                class="loader hstack align-items-center justify-content-center d-none mb-5 pb-5"
+              >
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -411,5 +373,7 @@
   </body>
   <script src="./assets/js/bootstrap.bundle.min.js"></script>
   <script src="./js/global.mjs" type="module"></script>
-  <script src="./js/feed.js" type="module"></script>
+  <script src="./js/search-results.mjs" type="module"></script>
 </html>
+
+

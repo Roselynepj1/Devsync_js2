@@ -4,7 +4,8 @@
   "description": "A starting point for the CSS Frameworks CA project",
   "scripts": {
     "sass:compile": "sass src/scss:src/css",
-    "sass:watch": "sass --watch src/scss:src/css"
+    "sass:watch": "sass --watch src/scss:src/css",
+    "serve": "live-server"
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,8 @@
   },
   "homepage": "https://github.com/NoroffFEU/css-frameworks-ca#readme",
   "dependencies": {
-    "bootstrap": "^5.3.2"
+    "bootstrap": "^5.3.2",
+    "jsonwebtoken": "^9.0.2"
   },
   "main": "index.html",
   "devDependencies": {

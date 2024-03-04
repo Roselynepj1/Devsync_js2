@@ -11865,6 +11865,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.pointer {
+  cursor: pointer;
+}
+
 .container-fluid,
 .row {
   --bs-gutter-x: 0;
