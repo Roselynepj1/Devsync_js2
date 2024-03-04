@@ -9,6 +9,11 @@ import {
 } from '../utilities/common.mjs'
 import { deletePostEventListener } from '../utilities/events.mjs'
 
+/**
+ * Generates a template for displaying a post.
+ * @param {Object} post - The post object containing post information.
+ * @returns {HTMLElement} The HTML element representing the post template.
+ */
 export const postTemplate = (post) => {
   const { id, author, body, media, created, _count } = post
   //check if the logged in user is the post author
@@ -294,6 +299,12 @@ export const postTemplate = (post) => {
   return postDiv
 }
 
+
+/**
+ * Generates a template for displaying post details.
+ * @param {Object} post - The post object containing post details.
+ * @returns {Object} An object containing the HTML element representing the post details template and a function to update comment count.
+ */
 export const postDetailsTemplate = (post) => {
   const { id, author, body, title, media, created, _count } = post
   //check if the logged in user is the post author
@@ -576,6 +587,11 @@ export const postDetailsTemplate = (post) => {
   return { postDiv, updateCommentTotal }
 }
 
+
+/**
+ * Generates a placeholder for posts when no posts are found.
+ * @returns {HTMLElement} The HTML element representing the post placeholder.
+ */
 export const postPlaceholder = () => {
   const cardDiv = createElement('div', ['card', 'p-2', 'mb-3'])
   const hstackDiv1 = createElement('div', ['hstack', 'mb-3'])
@@ -652,6 +668,11 @@ export const postPlaceholder = () => {
   return cardDiv
 }
 
+
+/**
+ * Generates a message indicating that no posts were found.
+ * @returns {HTMLElement} The HTML element representing the message for no posts found.
+ */
 export const postNotFound = () => {
   // Create the outer div element
   const outerDiv = createElement(
@@ -679,6 +700,13 @@ export const postNotFound = () => {
   return outerDiv
 }
 
+
+/**
+ * Generates a template for displaying a comment.
+ * @param {Object} comment - The comment object containing comment information.
+ * @param {Function} updateCommentsTotal - The function to update the total number of comments.
+ * @returns {HTMLElement} The HTML element representing the comment template.
+ */
 export const commentTemplate = (comment, updateCommentsTotal) => {
   const { id: commentId, postId, body, author, created } = comment
   //check if author is the current logged in user
@@ -778,6 +806,12 @@ export const commentTemplate = (comment, updateCommentsTotal) => {
   return commentDiv
 }
 
+
+/**
+ * Generates a template for the comment form.
+ * @param {Function} callback - The callback function to handle comment submission.
+ * @returns {HTMLElement} The HTML element representing the comment form template.
+ */
 export const postsNotFound = () => {
   // Create the outer div element
   const alertDiv = createElement(

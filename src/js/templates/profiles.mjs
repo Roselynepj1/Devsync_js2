@@ -1,5 +1,10 @@
 import { createElement, formatNumber } from '../utilities/common.mjs'
 
+
+/**
+ * Generates a placeholder template for a profile card.
+ * @returns {HTMLElement} The HTML element representing the profile card placeholder template.
+ */
 export const profileCardPlacholderTemplate = () => {
   // Create the main container div
   const container = createElement('div', [
@@ -76,6 +81,12 @@ export const profileCardPlacholderTemplate = () => {
   return container
 }
 
+
+/**
+ * Generates a template for displaying a profile card.
+ * @param {Object} userProfile - The user profile object containing user information.
+ * @returns {HTMLElement} The HTML element representing the profile card template.
+ */
 export const profileCardTemplate = (userProfile) => {
   // Create the main container div
   const container = createElement('div', [
