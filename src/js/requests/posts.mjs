@@ -26,7 +26,11 @@ export const getPosts = async ({
       method: 'GET',
     }
   )
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 
@@ -48,7 +52,11 @@ export const likePost = async (postId) => {
       _comments: true,
     }),
   })
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 
@@ -64,7 +72,11 @@ export const createPost = async (post) => {
     method: 'POST',
     body: JSON.stringify(post),
   })
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 
@@ -81,7 +93,11 @@ export const updatePost = async (postId, post) => {
     method: 'PUT',
     body: JSON.stringify(post),
   })
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 
@@ -96,7 +112,11 @@ export const deletePost = async (postId) => {
   const response = await auth.authFetch(`${POSTS_URL}/${postId}`, {
     method: 'DELETE',
   })
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 
@@ -114,7 +134,11 @@ export const getPost = async (postId) => {
       method: 'GET',
     }
   )
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 
@@ -131,7 +155,11 @@ export const getPostsByFollowing = async () => {
       method: 'GET',
     }
   )
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 
@@ -151,7 +179,11 @@ export const createComment = async (postId, comment) => {
       body: JSON.stringify(comment),
     }
   )
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 
@@ -164,7 +196,13 @@ export const createComment = async (postId, comment) => {
  *
  */
 export const deleteComment = async (postId, commentId) => {
-  return await auth.authFetch(`${POSTS_URL}/${postId}/comment/${commentId}`, {
+  const response =  await auth.authFetch(`${POSTS_URL}/${postId}/comment/${commentId}`, {
     method: 'DELETE',
   })
+
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }

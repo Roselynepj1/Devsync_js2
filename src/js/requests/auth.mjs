@@ -23,7 +23,11 @@ const login = async (user) => {
     },
   })
 
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 /**
@@ -54,7 +58,11 @@ const register = async (user) => {
       'Content-type': 'application/json; charset=UTF-8',
     },
   })
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 

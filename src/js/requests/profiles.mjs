@@ -27,7 +27,11 @@ export const getProfiles = async ({
       method: 'GET',
     }
   )
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 
@@ -52,7 +56,11 @@ export const getProfile = async (
       method: 'GET',
     }
   )
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 
@@ -68,7 +76,11 @@ export const followProfile = async (name) => {
   const response = await auth.authFetch(`${PROFILE_URL}/${name}/follow`, {
     method: 'PUT',
   })
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 
@@ -83,7 +95,11 @@ export const unfollowProfile = async (name) => {
   const response = await auth.authFetch(`${PROFILE_URL}/${name}/unfollow`, {
     method: 'PUT',
   })
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 
@@ -120,5 +136,9 @@ export const getProfilePosts = async (
       method: 'GET',
     }
   )
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
