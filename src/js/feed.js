@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //append the new post next to the create post form
         setTimeout(() => location.reload(), 3000)
       })
-      .catch((error) => crossOriginIsolated.log(error))
+      .catch((error) => alert("Failed to create new post because something went wrong"))
   })
 
   //Handle the sorting mechanism
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
       })
       .catch((errors) => {
-        console.log(errors)
+        alert("Failed to retrieve posts")
       })
   })
 
@@ -119,6 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
         //add posts to the posts container
         posts.forEach((post) => postsContainer.append(postTemplate(post)))
       })
-      .catch((error) => console.log(error))
+      .catch((error) => alert("Failed to retrieve posts for followers"))
   })
 })

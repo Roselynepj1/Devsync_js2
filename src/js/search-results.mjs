@@ -6,8 +6,7 @@ import {
   populate,
   searchLikeSQL,
   getSearchParams,
-} from './utilities/common.mjs'
-import { debounce } from './utilities/common.mjs'
+} from './utilities/common.mjs' 
 import { addScrollMoreEvent } from './utilities/events.mjs'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -31,11 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const filterPosts = (posts, searchQuery) => {
     return posts.filter(
-      (post) =>
-        searchLikeSQL(searchQuery, post.author.name) ||
-        searchLikeSQL(searchQuery, post.body) ||
-        searchLikeSQL(searchQuery, post.title) ||
-        searchLikeSQL(searchQuery, post.tags.join(','))
+      (post) => 
+        searchLikeSQL(searchQuery, post.title) 
     )
   }
 
@@ -47,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const searchPosts = (query) => {
-    const filteredPosts = filterPosts(allPosts, query)
+    const filteredPosts = filterPosts(allPosts, query) 
     renderPosts(filteredPosts)
   }
 
@@ -76,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     populate(postsPlaceholders, postPlaceholder, 5)
     fetchPosts().then(() => {
       searchPosts(searchQuery)
-    })
+    }).catch((error)=> alert("Failed to load more posts"))
   }else{
     showElement(noSearch)
   }
@@ -88,6 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchMore(offset).then((posts) => {
       const filteredPosts = filterPosts(posts, searchQuery)
       renderPosts(filteredPosts)
-    })
+    }).catch(error=> alert("Failed to load more posts"))
   })
 }) //End of document

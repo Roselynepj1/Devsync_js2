@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       //show user successfull creation of account
       success()
     } catch (error) {
-      return
+      alert("Could not register profile, try again")
     }
   }
 })
