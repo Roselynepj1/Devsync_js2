@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       })
       .catch((error) => {
-        console.log(error)
+        alert("Failed to retrieve new posts")
       })
   } else {
     //add the create post event listener

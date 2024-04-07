@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("redirecting")
         location.assign("src/feed.html")
       } catch (error) {
-        return
+        alert("Something went wrong, try again")
       }
     }
   }

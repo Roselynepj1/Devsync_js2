@@ -67,6 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         postsPlaceHolderContainer.classList.add('d-none')
       })
-      .catch((error) => console.log(error))
+      .catch((error) => alert("Could not fetch post details"))
   }
 })

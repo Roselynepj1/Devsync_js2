@@ -20,14 +20,19 @@ export const getProfiles = async ({
   followers = true,
   following = true,
   posts = false,
+  offset=10
 } = {}) => {
   const response = await auth.authFetch(
-    `${PROFILE_URL}?sortOrder=${sortOrder}&offset=100&_followers=${followers}&_following=${following}&posts=${posts}`,
+    `${PROFILE_URL}?sortOrder=${sortOrder}&limit=${limit}&offset=${offset}&_followers=${followers}&_following=${following}&posts=${posts}`,
     {
       method: 'GET',
     }
   )
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 
@@ -52,7 +57,11 @@ export const getProfile = async (
       method: 'GET',
     }
   )
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 
@@ -68,7 +77,11 @@ export const followProfile = async (name) => {
   const response = await auth.authFetch(`${PROFILE_URL}/${name}/follow`, {
     method: 'PUT',
   })
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 
@@ -83,7 +96,11 @@ export const unfollowProfile = async (name) => {
   const response = await auth.authFetch(`${PROFILE_URL}/${name}/unfollow`, {
     method: 'PUT',
   })
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }
 
 
@@ -120,5 +137,9 @@ export const getProfilePosts = async (
       method: 'GET',
     }
   )
-  return await response.json()
+  if (response.ok) {
+    return await response.json()
+  }
+
+  throw new Error(response.statusText)
 }

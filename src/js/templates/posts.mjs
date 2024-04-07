@@ -1,5 +1,6 @@
 import auth from '../requests/auth.mjs'
 import { deleteComment, likePost } from '../requests/posts.mjs'
+import { followProfile } from '../requests/profiles.mjs'
 import {
   createElement,
   getTimeAgo,
@@ -18,6 +19,7 @@ export const postTemplate = (post) => {
   const { id, author, body, media, created, _count } = post
   //check if the logged in user is the post author
   const checkUser = auth.isCurrentUser(author)
+
   // Create elements
   const postDiv = createElement(
     'div',
@@ -80,12 +82,47 @@ export const postTemplate = (post) => {
     ['dropdown-item', 'hstack', 'align-items-center', 'gap-3'],
     { href: 'javascript:void(0)' }
   )
+  const dropdownItemAnchorUnfollow = createElement(
+    'a',
+    ['dropdown-item', 'hstack', 'align-items-center', 'gap-3', 'd-none'],
+    { href: 'javascript:void(0)' }
+  )
+
+  dropdownItemAnchorFollow.addEventListener('click', () => {
+    followProfile(author.name)
+      .then((res) => {
+        hideElement(dropdownItemAnchorFollow)
+        showElement(dropdownItemAnchorUnfollow)
+        alert('User followed')
+      })
+      .catch((error) => alert('Failed to follow user, try again'))
+  })
+  dropdownItemAnchorUnfollow.addEventListener('click', () => {
+    const unfollow = confirm('Do you wish to unfollow' + author['name'] + '?')
+    if (!unfollow) return
+    followProfile(author.name)
+      .then((res) => {
+        hideElement(dropdownItemAnchorUnfollow)
+        showElement(dropdownItemAnchorFollow)
+        alert('User has been unfollowed')
+      })
+      .alert((error) => alert('Failed to unfollow user try again'))
+  })
+
   const followIcon = createElement(
     'span',
     ['material-symbols-outlined', 'fs-5'],
     { textContent: 'person_add' }
   )
+  const unfollowIcon = createElement(
+    'span',
+    ['material-symbols-outlined', 'fs-5'],
+    { textContent: 'person_remove' }
+  )
   const followText = createElement('span', [], { textContent: 'Follow user' })
+  const unfollowText = createElement('span', [], {
+    textContent: 'Unfollow user',
+  })
   const dropdownItemAnchorBlock = createElement(
     'a',
     ['dropdown-item', 'hstack', 'align-items-center', 'gap-3', 'disabled'],
@@ -252,6 +289,10 @@ export const postTemplate = (post) => {
     dropdownItemAnchorFollow.appendChild(followIcon)
     dropdownItemAnchorFollow.appendChild(followText)
     dropdownMenuItemLi.appendChild(dropdownItemAnchorFollow)
+    //unfollow
+    dropdownItemAnchorUnfollow.appendChild(unfollowIcon)
+    dropdownItemAnchorUnfollow.appendChild(unfollowText)
+    dropdownMenuItemLi.appendChild(dropdownItemAnchorUnfollow)
     //block
     dropdownItemAnchorBlock.appendChild(blockIcon)
     dropdownItemAnchorBlock.appendChild(blockText)
@@ -298,7 +339,6 @@ export const postTemplate = (post) => {
 
   return postDiv
 }
-
 
 /**
  * Generates a template for displaying post details.
@@ -587,7 +627,6 @@ export const postDetailsTemplate = (post) => {
   return { postDiv, updateCommentTotal }
 }
 
-
 /**
  * Generates a placeholder for posts when no posts are found.
  * @returns {HTMLElement} The HTML element representing the post placeholder.
@@ -668,7 +707,6 @@ export const postPlaceholder = () => {
   return cardDiv
 }
 
-
 /**
  * Generates a message indicating that no posts were found.
  * @returns {HTMLElement} The HTML element representing the message for no posts found.
@@ -699,7 +737,6 @@ export const postNotFound = () => {
 
   return outerDiv
 }
-
 
 /**
  * Generates a template for displaying a comment.
@@ -753,7 +790,7 @@ export const commentTemplate = (comment, updateCommentsTotal) => {
   //delete comment icon
   const deleteIcon = createElement(
     'span',
-    ['material-symbols-outlined', 'ms-auto','pointer'],
+    ['material-symbols-outlined', 'ms-auto', 'pointer'],
     {
       textContent: 'delete',
     }
@@ -805,7 +842,6 @@ export const commentTemplate = (comment, updateCommentsTotal) => {
 
   return commentDiv
 }
-
 
 /**
  * Generates a template for the comment form.

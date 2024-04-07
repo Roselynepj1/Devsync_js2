@@ -1,4 +1,5 @@
-import { createElement, formatNumber } from '../utilities/common.mjs'
+import { createElement, formatNumber,hideElement,showElement } from '../utilities/common.mjs'
+import { followProfile,unfollowProfile } from '../requests/profiles.mjs'
 
 
 /**
@@ -210,4 +211,70 @@ export const profileCardTemplate = (userProfile) => {
   container.appendChild(userInfoContainer)
 
   return container
+}
+
+/**
+ * Creates a suggested follow profile element.
+ * @returns {HTMLElement} The suggested follow profile element.
+ */
+export const suggestedFollowProfileTemplate = (user)=>{
+  const li = createElement('li', [
+    'list-group-item',
+    'd-flex',
+    'follow-card',
+    'align-items-center',
+  ])
+  const img = createElement('img', [], {
+    src: user['avatar'] || './assets/images/avatar.svg',
+    alt: user['name'] + ' avatar',
+    height: 40,
+    width: 40
+  })
+  const div = createElement('div', ['d-flex', 'flex-column', 'ms-3'])
+  const usernameSpan = createElement('span', ['mb-0', 'username'], {
+    textContent: user['name'],
+  })
+  const userHandleSpan = createElement('span', ['user-handle'], {
+    textContent: '@' + user['name'],
+  })
+  const followButton = createElement(
+    'button',
+    ['follow-btn', 'btn', 'btn-sm', 'border-primary', 'ms-auto'],
+    { textContent: 'Follow' }
+  )
+  const unFollowButton = createElement(
+    'button',
+    ['follow-btn', 'btn', 'btn-sm', 'btn-danger','text-white', 'ms-auto','d-none'],
+    { textContent: 'Unfollow' }
+  )
+
+  followButton.addEventListener('click',()=>{ 
+    followProfile(user['name']).then((res)=>{
+      //hide the follow button and show the unfollow button
+      hideElement(followButton)
+      showElement(unFollowButton)
+      alert("User followed")
+    }).catch(error=> alert("Failed to follow user, try again"))
+  })
+  unFollowButton.addEventListener('click',()=>{ 
+    const unfollow = confirm("Do you wish to unfollow "+ user['name']+"?")
+    if(!unfollow) return
+    unfollowProfile(user['name'])
+      .then((res) => {
+        //hide the follow button and show the unfollow button
+        hideElement(unFollowButton)
+        showElement(followButton)
+      })
+      .catch((error) => alert('Failed to unfollow user, try again'))
+  })
+
+  // Appending child elements to parent <li> element
+  div.appendChild(usernameSpan)
+  div.appendChild(userHandleSpan)
+  li.appendChild(img)
+  li.appendChild(div)
+  li.appendChild(followButton)
+  li.appendChild(unFollowButton)
+
+  return li
 }
