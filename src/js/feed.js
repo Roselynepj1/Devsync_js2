@@ -1,4 +1,10 @@
-import { getPosts, createPost, getPostsByFollowing } from './requests/posts.mjs'
+import {
+  getPosts,
+  createPost,
+  getPostsByFollowing,
+  getPostsFilter,
+  setPostsFilter,
+} from './requests/posts.mjs'
 import {
   populate,
   mediaControlButtons,
@@ -11,10 +17,15 @@ import {
   postsNotFound,
 } from './templates/posts.mjs'
 import {
+  addScrollMoreEvent,
   postFormEventListener,
   setFormUserToCurrentUserLoggedIn,
 } from './utilities/events.mjs'
-document.addEventListener('DOMContentLoaded', () => {
+import auth from './requests/auth.mjs'
+import { getProfiles } from './requests/profiles.mjs'
+import { suggestedFollowProfileTemplate } from './templates/profiles.mjs'
+
+document.addEventListener('DOMContentLoaded', async() => {
   const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
   const dropdownList = [...dropdownElementList].map(
     (dropdownToggleEl) => new bootstrap.Dropdown(dropdownToggleEl)
@@ -28,27 +39,49 @@ document.addEventListener('DOMContentLoaded', () => {
   const postsLoader = document.querySelector('.loader')
   let offset = 0 //defines the starting point will be incremented to search more
   const postsPerPage = 10
+  
   try {
     populate(postsPlaceHolderContainer, postPlaceholder, 5)
-    getPosts().then((posts) => {
-      hideElement(postsPlaceHolderContainer)
-      //populate posts
-      posts.forEach((post) => {
-        // console.log(post)
-        postsContainer.append(postTemplate(post))
-      })
+    let posts = []
+    //get the posts filter
+    const postsFilter = getPostsFilter()
+
+    if (postsFilter === 'following') {
+      posts = await getPostsByFollowing()
+    } else {
+      posts = await getPosts()
+    }
+    hideElement(postsPlaceHolderContainer)
+    //populate posts
+    posts.forEach((post) => {
+      // console.log(post)
+      postsContainer.append(postTemplate(post))
     })
   } catch {
+    alert("Failed to fetch new posts")
     return
   }
 
   //add event for searching for new posts when bottom is reached
   const feedArea = document.querySelector('.feed-area')
-  feedArea.addEventListener('scroll', function () {
-    if (feedArea.scrollHeight - feedArea.scrollTop === feedArea.clientHeight) {
-      //fetch for more more posts
-      showElement(postsLoader)
-      offset += postsPerPage
+  addScrollMoreEvent(feedArea, () => {
+    //fetch for more more posts
+    showElement(postsLoader)
+    offset += postsPerPage
+
+    //get posts filter
+    const postsFilter = getPostsFilter()
+
+    if (postsFilter === 'following') {
+      getPostsByFollowing({ offset }).then((posts) => {
+        hideElement(postsLoader)
+        //populate posts
+        posts.forEach((post) => {
+          // console.log(post)
+          postsContainer.append(postTemplate(post))
+        })
+      })
+    } else {
       getPosts({ offset }).then((posts) => {
         hideElement(postsLoader)
         //populate posts
@@ -75,7 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
         //append the new post next to the create post form
         setTimeout(() => location.reload(), 3000)
       })
-      .catch((error) => alert("Failed to create new post because something went wrong"))
+      .catch((error) =>
+        alert('Failed to create new post because something went wrong')
+      )
   })
 
   //Handle the sorting mechanism
@@ -84,6 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const sortByFollowing = document.querySelector('#sortByFollowing')
 
   sortByDefault.addEventListener('click', () => {
+    //set the posts filter for consistency
+    setPostsFilter('default')
     //clean the posts container
     postsContainer.innerHTML = ''
     //show placeholders
@@ -99,11 +136,13 @@ document.addEventListener('DOMContentLoaded', () => {
         })
       })
       .catch((errors) => {
-        alert("Failed to retrieve posts")
+        alert('Failed to retrieve posts')
       })
   })
 
   sortByFollowing.addEventListener('click', () => {
+    //set the posts filter for consistency
+    setPostsFilter('following')
     //show placeholders
     showElement(postsPlaceHolderContainer)
     //clear the posts container
@@ -119,6 +158,31 @@ document.addEventListener('DOMContentLoaded', () => {
         //add posts to the posts container
         posts.forEach((post) => postsContainer.append(postTemplate(post)))
       })
-      .catch((error) => alert("Failed to retrieve posts for followers"))
+      .catch((error) => alert('Failed to retrieve posts for followers'))
   })
+
+  //show some profile account to follow
+  const suggestedProfiles = document.getElementById('suggested-profiles')
+  if (suggestedProfiles) {
+    //get current user profile
+    const user = auth.getUser()
+    //fetch all profiles
+    getProfiles({ sortOrder: 'asc', limit: 50, following: false })
+      .then((profiles) => {
+        //filter all profiles that are followed and return unfollowed profiles
+        const filteredProfiles = profiles.filter((profile) => {
+          return !profile.followers.some(
+            (follower) => follower.name === user.name
+          )
+        })
+
+        filteredProfiles.slice(0, 5).forEach((profile) => {
+          suggestedProfiles.prepend(suggestedFollowProfileTemplate(profile))
+        })
+      })
+      .catch((error) => {
+        console.log(error)
+        return
+      })
+  }
 })
