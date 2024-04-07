@@ -20,9 +20,10 @@ export const getProfiles = async ({
   followers = true,
   following = true,
   posts = false,
+  offset=10
 } = {}) => {
   const response = await auth.authFetch(
-    `${PROFILE_URL}?sortOrder=${sortOrder}&offset=100&_followers=${followers}&_following=${following}&posts=${posts}`,
+    `${PROFILE_URL}?sortOrder=${sortOrder}&limit=${limit}&offset=${offset}&_followers=${followers}&_following=${following}&posts=${posts}`,
     {
       method: 'GET',
     }

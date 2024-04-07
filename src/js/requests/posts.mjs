@@ -11,14 +11,14 @@ import { POSTS_URL, FOLLOWING_URL } from '../utilities/contants.mjs'
  * @param {boolean} [options.reactions=true] Whether to include reaction information in the response.
  * @param {number} [options.offset=0] The offset for pagination (number of posts to skip before starting).
  * @returns {Promise<object>} A promise that resolves to the response data containing the list of posts.
- * 
+ *
  */
 export const getPosts = async ({
   sortOrder = 'desc',
   limit = 20,
   author = true,
   reactions = true,
-  offset=0
+  offset = 0,
 } = {}) => {
   const response = await auth.authFetch(
     `${POSTS_URL}?sortOrder=${sortOrder}&limit=${limit}&_author=${author}&_reactions=${reactions}&offset=${offset}`,
@@ -32,7 +32,6 @@ export const getPosts = async ({
 
   throw new Error(response.statusText)
 }
-
 
 /**
  * Likes a post by adding the user's reaction.
@@ -59,7 +58,6 @@ export const likePost = async (postId) => {
   throw new Error(response.statusText)
 }
 
-
 /**
  * Creates a new post.
  *
@@ -78,7 +76,6 @@ export const createPost = async (post) => {
 
   throw new Error(response.statusText)
 }
-
 
 /**
  * Updates an existing post.
@@ -100,7 +97,6 @@ export const updatePost = async (postId, post) => {
   throw new Error(response.statusText)
 }
 
-
 /**
  * Deletes a post.
  *
@@ -118,7 +114,6 @@ export const deletePost = async (postId) => {
 
   throw new Error(response.statusText)
 }
-
 
 /**
  * Fetches a specific post by its ID.
@@ -141,16 +136,21 @@ export const getPost = async (postId) => {
   throw new Error(response.statusText)
 }
 
-
 /**
  * Fetches a list of posts created by users the current user follows.
  *
  * @returns {Promise<object>} A promise that resolves to the response data containing the list of posts.
  *
  */
-export const getPostsByFollowing = async () => {
+export const getPostsByFollowing = async ({
+  sortOrder = 'desc',
+  limit = 20,
+  author = true,
+  reactions = true,
+  offset = 0,
+} = {}) => {
   const response = await auth.authFetch(
-    `${FOLLOWING_URL}?_author=true&_reactions=true&_comments=true`,
+    `${FOLLOWING_URL}?sortOrder=${sortOrder}&limit=${limit}&_author=${author}&_reactions=${reactions}&offset=${offset}`,
     {
       method: 'GET',
     }
@@ -161,7 +161,6 @@ export const getPostsByFollowing = async () => {
 
   throw new Error(response.statusText)
 }
-
 
 /**
  * Creates a new comment on a post.
@@ -186,7 +185,6 @@ export const createComment = async (postId, comment) => {
   throw new Error(response.statusText)
 }
 
-
 /**
  * Deletes a comment from a post.
  *
@@ -196,13 +194,33 @@ export const createComment = async (postId, comment) => {
  *
  */
 export const deleteComment = async (postId, commentId) => {
-  const response =  await auth.authFetch(`${POSTS_URL}/${postId}/comment/${commentId}`, {
-    method: 'DELETE',
-  })
+  const response = await auth.authFetch(
+    `${POSTS_URL}/${postId}/comment/${commentId}`,
+    {
+      method: 'DELETE',
+    }
+  )
 
   if (response.ok) {
     return await response.json()
   }
 
   throw new Error(response.statusText)
+}
+
+/**
+ * Sets the posts filter in the localStorage.
+ * @param {string} filter - The filter to be set.
+ * @returns {void}
+ */
+export const setPostsFilter = (filter) => {
+  localStorage.setItem('postsFilter', filter)
+}
+
+/**
+ * Gets the posts filter from the localStorage.
+ * @returns {string} The posts filter retrieved from localStorage, or 'default' if not found.
+ */
+export const getPostsFilter = () => {
+  return localStorage.getItem('postsFilter') ?? 'default'
 }
